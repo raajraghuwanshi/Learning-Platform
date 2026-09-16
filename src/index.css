@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-canvas: #ffffff;
+  --bg-surface: #ffffff;
+  --bg-card: #fafafa;
+  --border-editorial: #e5e5e5;
+  --text-ink: #000000;
+  --text-muted: #666666;
+  --accent-green: #047857;
+  --accent-emerald: #065f46;
+}
+
+.dark {
+  --bg-canvas: #000000;
+  --bg-surface: #0a0a0a;
+  --bg-card: #111111;
+  --border-editorial: #1a1a1a;
+  --text-ink: #ededed;
+  --text-muted: #888888;
+  --accent-green: #059669;
+  --accent-emerald: #047857;
+}
+
+body {
+  background-color: var(--bg-canvas);
+  color: var(--text-ink);
+  font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow-x: hidden;
+  letter-spacing: -0.011em;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Editorial headline styling utility */
+.font-editorial-headline {
+  font-family: 'Newsreader', 'Instrument Serif', Georgia, serif;
+  letter-spacing: -0.025em;
+  line-height: 1.08;
+}
+
+.font-editorial-display {
+  font-family: 'Instrument Serif', 'Newsreader', Georgia, serif;
+  letter-spacing: -0.02em;
+}
+
+.font-handwriting {
+  font-family: 'Caveat', cursive;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 9999px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.28);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+/* Vercel-style clean card */
+.editorial-card {
+  background-color: #ffffff;
+  border: 1px solid #e5e5e5;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.15s ease;
+}
+
+.dark .editorial-card {
+  background-color: #111111;
+  border-color: #1a1a1a;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.6);
+}
+
+.editorial-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
+  border-color: #d4d4d4;
+}
+
+.dark .editorial-card:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8);
+  border-color: #2a2a2a;
+}
+
+/* Focus rings */
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-emerald-700/40 focus:border-emerald-700;
+}
