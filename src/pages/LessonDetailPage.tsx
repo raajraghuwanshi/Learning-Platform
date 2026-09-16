@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { 
-  CheckCircle2, 
-  ChevronLeft, 
-  ChevronRight, 
-  Sparkles, 
+import {
+  CheckCircle2,
+  ChevronLeft,
+  ChevronRight,
+  Sparkles,
   Terminal,
   ExternalLink,
   Languages
@@ -139,7 +139,7 @@ export const LessonDetailPage: React.FC = () => {
             <Sparkles className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
             <span className="text-xs uppercase font-mono font-bold tracking-wider text-emerald-700 dark:text-emerald-300">
               {learningMode === 'simple' && 'Beginner Friendly Explanation'}
-              {learningMode === 'hinglish' && 'आसान भाषा में (Hinglish Guide)'}
+              {learningMode === 'hinglish' && 'Hinglish Guide'}
               {learningMode === 'developer' && 'Professional Developer Explanation'}
               {learningMode === 'deep' && 'Under The Hood (React Fiber Internals)'}
               {learningMode === 'no-code' && 'Real-World No-Code Mental Analogy'}
@@ -159,9 +159,8 @@ export const LessonDetailPage: React.FC = () => {
           <div className="mb-8 p-4 rounded-xl border border-blue-200 dark:border-blue-900/50 bg-blue-50/50 dark:bg-blue-950/20">
             <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
               <div className="flex items-center gap-2">
-                <span className="text-base">🇮🇳</span>
                 <span className="text-xs font-bold uppercase tracking-wider text-blue-800 dark:text-blue-300 font-mono">
-                  आसान भाषा में समझें (Hinglish Summary)
+                  Summary
                 </span>
               </div>
               {officialDocsUrl && (

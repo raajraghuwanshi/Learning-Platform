@@ -146,7 +146,7 @@ export const LessonHeader: React.FC<LessonHeaderProps> = ({
           }`}
         >
           <Languages className="w-3.5 h-3.5 text-blue-500 dark:text-blue-400" />
-          <span>Hinglish (आसान भाषा)</span>
+          <span>Hinglish</span>
         </button>
 
         <button
