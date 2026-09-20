@@ -12,11 +12,32 @@ export const MasteryPanel: React.FC = () => {
     0
   );
 
+  // Calculate genuine engineering pillar scores from real topic mastery
+  const stateTopics = ['use-state', 'use-reducer', 'lifting-state', 'derived-state'];
+  const stateScore = Math.round(
+    stateTopics.reduce((acc, slug) => acc + (progress.masteryScores[slug] || 0), 0) / stateTopics.length
+  );
+
+  const compTopics = ['what-is-react', 'components', 'jsx', 'props', 'events', 'conditional-rendering', 'lists-and-keys', 'use-id'];
+  const compScore = Math.round(
+    compTopics.reduce((acc, slug) => acc + (progress.masteryScores[slug] || 0), 0) / compTopics.length
+  );
+
+  const effectTopics = ['use-effect', 'use-layout-effect', 'api-fetching', 'debounced-search', 'axios', 'react-query'];
+  const effectScore = Math.round(
+    effectTopics.reduce((acc, slug) => acc + (progress.masteryScores[slug] || 0), 0) / effectTopics.length
+  );
+
+  const archTopics = ['composition', 'custom-hooks', 'use-context', 'use-memo', 'use-callback', 'use-transition', 'use-deferred-value', 'use-imperative-handle', 'code-splitting', 'react-router', 'jwt-auth'];
+  const archScore = Math.round(
+    archTopics.reduce((acc, slug) => acc + (progress.masteryScores[slug] || 0), 0) / archTopics.length
+  );
+
   const pillars = [
-    { name: 'State & Memory', score: Math.min(100, (progress.completedLessons.filter(s => s.includes('state') || s.includes('reducer')).length / 3) * 100 || (overallMastery > 0 ? 80 : 0)) },
-    { name: 'Components & JSX', score: Math.min(100, (progress.completedLessons.filter(s => s.includes('component') || s.includes('jsx') || s.includes('prop')).length / 3) * 100 || (overallMastery > 0 ? 90 : 0)) },
-    { name: 'Effects & Async', score: Math.min(100, (progress.completedLessons.filter(s => s.includes('effect') || s.includes('async')).length / 2) * 100 || (overallMastery > 0 ? 70 : 0)) },
-    { name: 'Architecture & Scalability', score: Math.min(100, (progress.completedLessons.filter(s => s.includes('custom') || s.includes('context') || s.includes('memo')).length / 3) * 100 || (overallMastery > 0 ? 60 : 0)) },
+    { name: 'State & Memory', score: stateScore },
+    { name: 'Components & JSX', score: compScore },
+    { name: 'Effects & Async', score: effectScore },
+    { name: 'Architecture & Scalability', score: archScore },
   ];
 
   const renderInstrumentBar = (percentage: number) => {

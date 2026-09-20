@@ -46,6 +46,7 @@ export const TopicSidebar: React.FC = () => {
     data: true,
     performance: true,
     'mern-ecosystem': true,
+    'production-react': true,
   });
 
   const toggleCategory = (catId: string) => {

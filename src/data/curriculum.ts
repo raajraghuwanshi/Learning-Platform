@@ -384,6 +384,65 @@ export const CURRICULUM_CATEGORIES: CategoryMeta[] = [
         prerequisites: ['use-state', 'custom-hooks']
       }
     ]
+  },
+  {
+    id: 'production-react',
+    title: 'Production Ready React',
+    slug: 'production-react',
+    description: 'Essential hooks, concurrency, and architecture patterns required to build resilient, accessible, and 60fps production applications.',
+    iconName: 'Zap',
+    topics: [
+      {
+        id: 'use-layout-effect',
+        slug: 'use-layout-effect',
+        title: 'useLayoutEffect & DOM Measurements',
+        category: 'production-react',
+        difficulty: 'Advanced',
+        estimatedMinutes: 25,
+        description: 'Synchronous pre-paint measurements, eliminating layout shifts (CLS), and tooltip/popover anchoring.',
+        prerequisites: ['use-effect', 'use-ref']
+      },
+      {
+        id: 'use-transition',
+        slug: 'use-transition',
+        title: 'useTransition & Concurrent UI',
+        category: 'production-react',
+        difficulty: 'Advanced',
+        estimatedMinutes: 30,
+        description: 'Splitting urgent user input from heavy background state transitions to keep interfaces 60fps responsive.',
+        prerequisites: ['use-state', 'use-effect']
+      },
+      {
+        id: 'use-deferred-value',
+        slug: 'use-deferred-value',
+        title: 'useDeferredValue & List Throttling',
+        category: 'production-react',
+        difficulty: 'Intermediate',
+        estimatedMinutes: 20,
+        description: 'Deferring expensive child component re-renders while typing without artificial debounce delays.',
+        prerequisites: ['use-transition', 'use-memo']
+      },
+      {
+        id: 'use-id',
+        slug: 'use-id',
+        title: 'useId & Accessible Forms',
+        category: 'production-react',
+        difficulty: 'Beginner',
+        estimatedMinutes: 18,
+        description: 'Generating collision-free identifiers for WCAG a11y, aria-describedby, and SSR hydration safety.',
+        prerequisites: ['forms']
+      },
+      {
+        id: 'use-imperative-handle',
+        slug: 'use-imperative-handle',
+        title: 'useImperativeHandle & forwardRef',
+        category: 'production-react',
+        difficulty: 'Advanced',
+        estimatedMinutes: 28,
+        description: 'Exposing customized, controlled imperative methods (focus, reset, open) to parents without leaking DOM nodes.',
+        prerequisites: ['use-ref']
+      }
+    ]
   }
 ];
 

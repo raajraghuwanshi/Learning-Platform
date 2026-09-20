@@ -40,6 +40,13 @@ import {
   errorBoundariesLesson,
   toastNotificationsLesson
 } from './mernEcosystemLessons';
+import {
+  useLayoutEffectLesson,
+  useTransitionLesson,
+  useDeferredValueLesson,
+  useIdLesson,
+  useImperativeHandleLesson
+} from './productionReactLessons';
 
 export const componentsLesson: LessonContent = {
   id: 'components',
@@ -621,6 +628,13 @@ export const allLessonsMap: Record<string, LessonContent> = {
   'env-variables': envVariablesLesson,
   'error-boundaries': errorBoundariesLesson,
   'toast-notifications': toastNotificationsLesson,
+
+  // Production Ready React
+  'use-layout-effect': useLayoutEffectLesson,
+  'use-transition': useTransitionLesson,
+  'use-deferred-value': useDeferredValueLesson,
+  'use-id': useIdLesson,
+  'use-imperative-handle': useImperativeHandleLesson,
 };
 
 export const getLessonBySlug = (slug: string): LessonContent | undefined => {

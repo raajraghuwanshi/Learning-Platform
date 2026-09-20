@@ -218,6 +218,38 @@ export const TOPIC_RESOURCES: Record<string, TopicResource> = {
     docsUrl: 'https://react.dev/learn/managing-state',
     quickSummary: 'API success aur error actions par user ko auto-dismissing popups dikhana.',
     hinglish: 'Toast notifications chhote, stylish popups hote hain jo screen ke corner me aakar user ko confirmation ya error ka feedback dete hain — jaise "Item added to cart!" ya "Failed to save profile". Ye state ya custom hook ke zariye control hote hain aur kuch seconds baad automatically smooth animation ke sath dismiss ho jate hain.'
+  },
+
+  // ─── Production Ready React ────────────────────────────────────────────────
+  'use-layout-effect': {
+    title: 'useLayoutEffect & DOM Measurements',
+    docsUrl: 'https://react.dev/reference/react/useLayoutEffect',
+    quickSummary: 'Screen par paint hone se PEHLE synchronously DOM measure aur adjust karne ka hook.',
+    hinglish: 'useLayoutEffect bilkul useEffect jaisa hi dikhta hai, lekin iska timing alag hota hai. useEffect screen par paint hone ke BAAD chalta hai (async), jabki useLayoutEffect screen par paint hone se PEHLE synchronously chalta hai. Production apps me jab aapko DOM measure karna ho (jaise Tooltip ki position calculate karna, ya Modal/Popover ko screen ke hisab se adjust karna), tab useLayoutEffect use kiya jata hai taaki user ko screen par koi jhatka ya visual flicker na dikhe.'
+  },
+  'use-transition': {
+    title: 'useTransition & Concurrent UI',
+    docsUrl: 'https://react.dev/reference/react/useTransition',
+    quickSummary: 'Urgent user typing ko instant rakhte hue heavy background filtering ko non-blocking banata hai.',
+    hinglish: 'useTransition React 18 ka ek powerful concurrent hook hai jo state updates ko do parts me divide karta hai: Urgent updates aur Non-Urgent (Transition) updates. Jaise jab user search box me type karta hai, toh text ka type hona URGENT hai (input lag nahi aana chahiye), lekin 5000 items ki list filter hona NON-URGENT hai. startTransition ke andar heavy state update daal kar hum React ko batate hain ki input ko pehle respond karo aur background me list filter hone par "isPending" spinner dikhao.'
+  },
+  'use-deferred-value': {
+    title: 'useDeferredValue & List Throttling',
+    docsUrl: 'https://react.dev/reference/react/useDeferredValue',
+    quickSummary: 'Fast state/prop ke peeche heavy child components ko smoothly lag karne deta hai.',
+    hinglish: 'useDeferredValue bhi useTransition ki tarah background rendering ke liye use hota hai, lekin ye direct value (jaise string, query) ko defer karta hai. Jaise jab aapke paas ek fast input state hai aur ek heavy child component hai, toh const deferredQuery = useDeferredValue(query) use karke aap heavy child ko deferred value dete ho. Jab user tezi se type karta hai, toh input turant update hota hai aur heavy list thoda ruk kar render hoti hai bina screen ko freeze kiye.'
+  },
+  'use-id': {
+    title: 'useId & Accessible Forms',
+    docsUrl: 'https://react.dev/reference/react/useId',
+    quickSummary: 'WCAG accessibility aur SSR hydration ke liye collision-free unique IDs banata hai.',
+    hinglish: 'useId React ka ek built-in hook hai jo accessibility (a11y) aur form inputs ke liye unique IDs generate karta hai. Production apps me jab hum reusable Input component banate hain, toh hum hardcoded id="name" nahi likh sakte kyunki agar page par do input hue toh duplicate ID ka bug aayega. Aur agar Math.random() use karein toh SSR (Next.js) me server aur client ka ID mismatch ho jata hai. useId har component instance ko ek unique aur hydration-safe ID deta hai.'
+  },
+  'use-imperative-handle': {
+    title: 'useImperativeHandle & forwardRef',
+    docsUrl: 'https://react.dev/reference/react/useImperativeHandle',
+    quickSummary: 'Parent component ko child ke raw DOM ke bajaye controlled custom methods expose karta hai.',
+    hinglish: 'useImperativeHandle hook forwardRef ke sath milkar parent component ko child component ka custom imperative handle (API) provide karta hai. Production design systems me hum parent ko direct raw DOM element ka access nahi dena chahte taaki parent DOM ko kharab na kar sake. useImperativeHandle se child component decide karta hai ki parent ko kaunse specific functions call karne ki permission hai (jaise focus(), reset(), openModal()).'
   }
 };
 
