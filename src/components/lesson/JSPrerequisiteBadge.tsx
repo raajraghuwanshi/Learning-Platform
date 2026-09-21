@@ -18,7 +18,7 @@ export const JSPrerequisiteBadge: React.FC<JSPrerequisiteBadgeProps> = ({ prereq
   if (!prerequisites || prerequisites.length === 0) return null;
 
   return (
-    <div className="bg-white dark:bg-[#111] border border-[#e5e5e5] dark:border-[#222] rounded-xl p-5 mb-8 shadow-xs">
+    <div className="glass-card p-5 mb-8 shadow-xs">
       <div className="flex items-center gap-2 mb-3">
         <div className="w-2 h-2 rounded-full bg-amber-500" />
         <h4 className="text-xs uppercase font-bold tracking-wider text-amber-700 dark:text-amber-400 font-mono">
@@ -34,7 +34,7 @@ export const JSPrerequisiteBadge: React.FC<JSPrerequisiteBadgeProps> = ({ prereq
           <button
             key={idx}
             onClick={() => setSelectedConcept(prereq)}
-            className="px-3 py-1.5 bg-[#fafafa] hover:bg-[#f5f5f5] dark:bg-[#0a0a0a] dark:hover:bg-slate-900 text-[#333] dark:text-[#ededed] border border-[#e5e5e5] dark:border-[#222] hover:border-amber-500/50 rounded-lg text-xs font-medium transition flex items-center gap-1.5 cursor-pointer"
+            className="px-3 py-1.5 bg-white/70 hover:bg-amber-50/80 dark:bg-white/5 dark:hover:bg-white/10 text-[#333] dark:text-[#ededed] border border-[#e5e5e5] dark:border-[#222] hover:border-amber-500/50 rounded-lg text-xs font-medium transition flex items-center gap-1.5 cursor-pointer shadow-2xs hover:-translate-y-0.5"
           >
             <BookOpen className="w-3.5 h-3.5 text-amber-500" />
             <span>{prereq.name}</span>

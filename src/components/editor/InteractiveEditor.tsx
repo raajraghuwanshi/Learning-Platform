@@ -397,7 +397,7 @@ export const InteractiveEditor: React.FC<InteractiveEditorProps> = ({
         {/* Live Preview Pane */}
         <div 
           style={{ width: isWide ? `${100 - splitRatio}%` : '100%' }}
-          className="p-3 bg-[#fafafa] dark:bg-[#0a0a0a]/90 flex flex-col overflow-auto min-w-0 flex-1"
+          className="p-3 bg-white dark:bg-[#0a0a0a]/90 flex flex-col overflow-auto min-w-0 flex-1"
         >
           <div className="px-2 py-1 mb-2 text-[11px] text-[#888] font-mono flex items-center justify-between">
             <div className="flex items-center gap-1.5">
@@ -435,7 +435,7 @@ export const InteractiveEditor: React.FC<InteractiveEditorProps> = ({
     return (
       <>
         {/* Normal (collapsed) placeholder to avoid layout shift */}
-        <div className="rounded-xl border border-[#e5e5e5] dark:border-[#222] bg-white dark:bg-[#0a0a0a]/80 shadow-md mb-8 h-12 flex items-center justify-center">
+        <div className="glass-card mb-8 h-12 flex items-center justify-center">
           <span className="text-xs text-[#888] font-mono">Editor is in fullscreen mode — press Esc to return</span>
         </div>
 
@@ -448,7 +448,7 @@ export const InteractiveEditor: React.FC<InteractiveEditorProps> = ({
   }
 
   return (
-    <div className="rounded-xl border border-[#e5e5e5] dark:border-[#222] bg-white dark:bg-[#0a0a0a]/80 shadow-md dark:shadow-2xl overflow-hidden mb-8 transition-all">
+    <div className="glass-card shadow-md dark:shadow-2xl overflow-hidden mb-8 transition-all">
       {editorContent}
     </div>
   );

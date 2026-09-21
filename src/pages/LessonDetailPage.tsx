@@ -134,7 +134,7 @@ export const LessonDetailPage: React.FC = () => {
         </div>
 
         {/* Dynamic Explanation Card */}
-        <section className="p-5 bg-white dark:bg-[#111] border border-[#e5e5e5] dark:border-[#222] rounded-xl mb-4 shadow-xs">
+        <section className="glass-card p-5 mb-4 shadow-xs">
           <div className="flex items-center gap-2 mb-2">
             <Sparkles className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
             <span className="text-xs uppercase font-mono font-bold tracking-wider text-emerald-700 dark:text-emerald-300">
@@ -156,7 +156,7 @@ export const LessonDetailPage: React.FC = () => {
 
         {/* Hinglish Quick Understanding Callout (Always accessible) */}
         {learningMode !== 'hinglish' && (
-          <div className="mb-8 p-4 rounded-xl border border-blue-200 dark:border-blue-900/50 bg-blue-50/50 dark:bg-blue-950/20">
+          <div className="mb-8 p-4 rounded-xl border border-blue-200/80 dark:border-blue-900/50 bg-blue-50/60 dark:bg-blue-950/20 backdrop-blur-md shadow-xs">
             <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
               <div className="flex items-center gap-2">
                 <span className="text-xs font-bold uppercase tracking-wider text-blue-800 dark:text-blue-300 font-mono">
@@ -294,7 +294,7 @@ export const LessonDetailPage: React.FC = () => {
 
         {/* 13. Real-world Production Usage */}
         {lesson?.realWorld && (
-          <section id="sec-real-world" className="bg-white dark:bg-[#111] border border-[#e5e5e5] dark:border-[#222] rounded-xl p-6 mb-8 shadow-xs">
+          <section id="sec-real-world" className="glass-card p-6 mb-8 shadow-xs">
             <div className="flex items-center gap-2 mb-2">
               <Terminal className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
               <h3 className="text-base font-bold text-black dark:text-white tracking-tight">{lesson.realWorld.title}</h3>
@@ -307,7 +307,7 @@ export const LessonDetailPage: React.FC = () => {
               {lesson.realWorld.codeSnippet}
             </pre>
 
-            <div className="p-3 bg-[#fafafa] dark:bg-[#0a0a0a] rounded-lg text-xs space-y-2 border border-[#e5e5e5] dark:border-[#222]">
+            <div className="p-3 bg-white/60 dark:bg-[#0a0a0a]/60 backdrop-blur-xs rounded-lg text-xs space-y-2 border border-[#e5e5e5] dark:border-[#222]">
               <div className="text-[#444] dark:text-[#ccc]">
                 <strong className="text-emerald-700 dark:text-emerald-400">Key Engineering Takeaway: </strong>
                 {lesson.realWorld.keyTakeaway}
@@ -329,7 +329,7 @@ export const LessonDetailPage: React.FC = () => {
 
         {/* Summary Bullet Points */}
         {lesson?.summary && lesson.summary.length > 0 && (
-          <div className="p-5 bg-white dark:bg-[#0a0a0a] border border-[#e5e5e5] dark:border-[#222] rounded-xl mb-8 text-xs shadow-xs">
+          <div className="glass-card p-5 mb-8 text-xs shadow-xs">
             <h4 className="font-bold text-sm text-black dark:text-white mb-2">Summary & Key Takeaways</h4>
             <ul className="space-y-1.5 text-[#444] dark:text-[#ccc]">
               {lesson.summary.map((item, idx) => (
@@ -347,7 +347,7 @@ export const LessonDetailPage: React.FC = () => {
           {lesson.previousTopic ? (
             <Link
               to={`/learn/${lesson.previousTopic.category}/${lesson.previousTopic.slug}`}
-              className="flex items-center gap-2 px-4 py-2.5 bg-white hover:bg-[#f5f5f5] dark:bg-[#111] dark:hover:bg-[#1a1a1a] text-[#444] dark:text-[#ccc] hover:text-black dark:hover:text-white border border-[#e5e5e5] dark:border-[#222] rounded-lg transition"
+              className="glass-card-interactive flex items-center gap-2 px-4 py-2.5 text-[#444] dark:text-[#ccc] hover:text-black dark:hover:text-white rounded-lg transition"
             >
               <ChevronLeft className="w-4 h-4" />
               <div className="text-left">
@@ -360,7 +360,7 @@ export const LessonDetailPage: React.FC = () => {
           {lesson.nextTopic ? (
             <Link
               to={`/learn/${lesson.nextTopic.category}/${lesson.nextTopic.slug}`}
-              className="flex items-center gap-2 px-4 py-2.5 bg-emerald-700 hover:bg-emerald-600 text-white font-bold rounded-lg transition shadow-sm"
+              className="flex items-center gap-2 px-4 py-2.5 bg-emerald-700 hover:bg-emerald-600 text-white font-bold rounded-lg transition shadow-sm hover:shadow-md hover:-translate-y-0.5"
             >
               <div className="text-right">
                 <span className="text-[10px] text-emerald-100 block uppercase">Next Lesson</span>

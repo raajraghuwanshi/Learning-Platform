@@ -46,20 +46,20 @@ export const QuizSection: React.FC<QuizSectionProps> = ({ slug, quiz }) => {
   ).length;
 
   return (
-    <div className="bg-white dark:bg-[#111] border border-[#e5e5e5] dark:border-[#222] rounded-xl p-6 mb-8 shadow-xs">
+    <div className="glass-card rounded-2xl p-6 mb-8 shadow-sm">
       <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
         <div className="flex items-center gap-2">
-          <div className="p-1.5 bg-emerald-50 dark:bg-emerald-500/10 rounded-lg text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/20">
+          <div className="p-2 bg-emerald-500/10 rounded-xl text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
             <CheckSquare className="w-5 h-5" />
           </div>
           <div>
-            <h3 className="text-base font-bold text-black dark:text-white tracking-tight">Quick Concept Quiz</h3>
+            <h3 className="text-base font-bold text-black dark:text-white tracking-tight font-sans">Quick Concept Quiz</h3>
             <p className="text-xs text-[#666] dark:text-[#888]">Prove your conceptual understanding ({quiz.length} questions).</p>
           </div>
         </div>
 
         {existingScore && (
-          <div className="flex items-center gap-1.5 px-3 py-1 bg-[#fafafa] dark:bg-[#0a0a0a] border border-[#e5e5e5] dark:border-[#222] rounded-lg text-xs font-mono">
+          <div className="flex items-center gap-1.5 px-3 py-1 bg-black/[0.04] dark:bg-white/[0.06] border border-black/5 dark:border-white/10 rounded-xl text-xs font-mono">
             <Award className="w-3.5 h-3.5 text-amber-500" />
             <span className="text-[#666] dark:text-[#888]">Best Score:</span>
             <span className="font-bold text-black dark:text-white">
@@ -74,7 +74,7 @@ export const QuizSection: React.FC<QuizSectionProps> = ({ slug, quiz }) => {
           const selected = userAnswers[qIdx];
 
           return (
-            <div key={item.id} className="p-5 bg-[#fafafa] dark:bg-[#0a0a0a] border border-[#e5e5e5] dark:border-[#222]/80 rounded-xl">
+            <div key={item.id} className="p-5 bg-black/[0.02] dark:bg-white/[0.03] border border-black/5 dark:border-white/10 rounded-2xl">
               <div className="flex items-start justify-between gap-2 mb-2">
                 <h4 className="text-sm font-bold text-black dark:text-white leading-relaxed">
                   <span className="text-[#888] dark:text-[#666] font-mono mr-2">{qIdx + 1}.</span>

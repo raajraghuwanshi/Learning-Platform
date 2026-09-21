@@ -6,10 +6,15 @@ import {
   Terminal, 
   Layout, 
   Copy, 
-  Check
+  Check,
+  Plus,
+  Trash2,
+  X,
+  ArrowRight
 } from 'lucide-react';
 import { LivePreview } from '../components/editor/LivePreview';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, Link } from 'react-router-dom';
+import { getProjectBySlug } from '../data/projectsData';
 
 interface PlaygroundFile {
   name: string;
@@ -103,7 +108,18 @@ const DEFAULT_PLAYGROUND_FILES: PlaygroundFile[] = [
 
 export const PlaygroundPage: React.FC = () => {
   const [searchParams] = useSearchParams();
+  const templateSlug = searchParams.get('template') || searchParams.get('project');
+  const matchedProject = templateSlug ? getProjectBySlug(templateSlug) : undefined;
+
   const [files, setFiles] = useState<PlaygroundFile[]>(() => {
+    if (matchedProject && matchedProject.starterFiles && matchedProject.starterFiles.length > 0) {
+      return matchedProject.starterFiles.map(sf => ({
+        name: sf.name,
+        language: sf.language,
+        content: sf.content
+      }));
+    }
+
     // If ?code= param exists, pre-populate App.jsx with it
     const encodedCode = searchParams.get('code');
     if (encodedCode) {
@@ -123,7 +139,7 @@ export const PlaygroundPage: React.FC = () => {
     const hascode = searchParams.get('code');
     return [
       '⚡ ReactOS Sandboxed Environment initialized.',
-      hascode ? '📋 Code loaded from lesson sandbox. Edit freely!' : '✓ Compiler ready: Babel runtime active.'
+      matchedProject ? `📁 Loaded project template: "${matchedProject.title}"` : hascode ? '📋 Code loaded from lesson sandbox. Edit freely!' : '✓ Compiler ready: Babel runtime active.'
     ];
   });
   const [copied, setCopied] = useState(false);
@@ -175,7 +191,74 @@ export const PlaygroundPage: React.FC = () => {
   // Show a toast-like banner if code was loaded from a lesson
   const [cameFromLesson] = useState(() => !!searchParams.get('code'));
 
+  const [isCreatingFile, setIsCreatingFile] = useState(false);
+  const [newFileName, setNewFileName] = useState('');
+  const newFileInputRef = useRef<HTMLInputElement>(null);
+
   const activeFile = files[activeFileIndex] || files[0];
+
+  const handleStartCreateFile = () => {
+    setIsCreatingFile(true);
+    setNewFileName('');
+    setTimeout(() => newFileInputRef.current?.focus(), 50);
+  };
+
+  const handleConfirmCreateFile = () => {
+    let rawName = newFileName.trim();
+    if (!rawName) {
+      setIsCreatingFile(false);
+      return;
+    }
+    if (!rawName.includes('.')) {
+      rawName += '.jsx';
+    }
+    if (files.some(f => f.name.toLowerCase() === rawName.toLowerCase())) {
+      alert('A file with this name already exists.');
+      return;
+    }
+
+    const baseName = rawName.split('.')[0];
+    const componentName = baseName.charAt(0).toUpperCase() + baseName.slice(1);
+
+    const newFile: PlaygroundFile = {
+      name: rawName,
+      language: rawName.endsWith('.css') ? 'css' : 'javascript',
+      content: rawName.endsWith('.css')
+        ? `/* Custom styles for ${rawName} */\n`
+        : `export function ${componentName}() {\n  return (\n    <div className="p-4 bg-slate-950/80 border border-[#333] rounded-xl text-white mb-3">\n      <h3 className="text-sm font-bold text-emerald-400 mb-1">${componentName} Component</h3>\n      <p className="text-xs text-slate-400">Edit ${rawName} in the explorer to customize.</p>\n    </div>\n  );\n}\n`
+    };
+
+    const nextFiles = [...files, newFile];
+    setFiles(nextFiles);
+    setActiveFileIndex(nextFiles.length - 1);
+    setIsCreatingFile(false);
+    setNewFileName('');
+    setConsoleLogs(prev => [...prev, `📁 Created new file: ${rawName}`]);
+  };
+
+  const handleDeleteFile = (e: React.MouseEvent, indexToDelete: number) => {
+    e.stopPropagation();
+    if (files.length <= 1) {
+      alert('You must keep at least one file in the project.');
+      return;
+    }
+    const fileToDelete = files[indexToDelete];
+    const nextFiles = files.filter((_, idx) => idx !== indexToDelete);
+    setFiles(nextFiles);
+    if (activeFileIndex >= nextFiles.length) {
+      setActiveFileIndex(Math.max(0, nextFiles.length - 1));
+    } else if (activeFileIndex === indexToDelete) {
+      setActiveFileIndex(0);
+    }
+    setConsoleLogs(prev => [...prev, `🗑️ Deleted file: ${fileToDelete.name}`]);
+  };
+
+  // Bundle all files for preview execution
+  const bundledCode = React.useMemo(() => {
+    const helperFiles = files.filter((_, idx) => idx !== 0).map(f => f.content).join('\n\n');
+    const mainFile = files[0]?.content || '';
+    return `${helperFiles}\n\n${mainFile}`;
+  }, [files]);
 
   const handleUpdateContent = (newContent: string) => {
     setFiles(prev => prev.map((f, i) => i === activeFileIndex ? { ...f, content: newContent } : f));
@@ -198,6 +281,7 @@ export const PlaygroundPage: React.FC = () => {
 
   const handleReset = () => {
     setFiles(DEFAULT_PLAYGROUND_FILES);
+    setActiveFileIndex(0);
     setConsoleLogs(prev => [...prev, '🔄 Playground reset to default template.']);
   };
 
@@ -208,8 +292,26 @@ export const PlaygroundPage: React.FC = () => {
 
   return (
     <div className="flex-1 flex flex-col h-[calc(100vh-3.5rem)] bg-white dark:bg-[#0a0a0a] overflow-hidden transition-colors">
+      {/* Project Template Banner */}
+      {matchedProject && (
+        <div className="px-4 py-2 bg-slate-900 text-white text-xs font-mono flex flex-wrap items-center justify-between gap-2 shrink-0 border-b border-slate-800">
+          <div className="flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="font-bold text-emerald-400">Project: {matchedProject.title}</span>
+            <span className="text-slate-400 hidden sm:inline">— Starter files loaded.</span>
+          </div>
+          <Link
+            to={`/projects/${matchedProject.slug}`}
+            className="flex items-center gap-1 text-emerald-400 hover:text-emerald-300 font-bold transition underline"
+          >
+            <span>View Architecture Blueprint & Mind Map</span>
+            <ArrowRight className="w-3 h-3" />
+          </Link>
+        </div>
+      )}
+
       {/* Lesson-loaded banner */}
-      {cameFromLesson && (
+      {cameFromLesson && !matchedProject && (
         <div className="px-4 py-2 bg-emerald-700 text-white text-xs font-mono flex items-center gap-2 shrink-0">
           <span className="font-bold">📋 Code imported from lesson sandbox.</span>
           <span className="opacity-80">Edit freely — changes don't affect the original lesson.</span>
@@ -287,25 +389,77 @@ export const PlaygroundPage: React.FC = () => {
       {/* Main IDE Workspace */}
       <div className="flex-1 flex flex-col md:flex-row min-h-0 overflow-hidden">
         {/* Left: Files Explorer */}
-        <div className="w-48 shrink-0 hidden md:block border-r border-[#e5e5e5] dark:border-[#222] bg-[#fafafa] dark:bg-[#0c0e14] p-3 overflow-y-auto">
-          <div className="text-[11px] font-mono uppercase text-[#666] font-bold mb-3 flex items-center justify-between">
-            <span>Explorer</span>
+        <div className="w-56 shrink-0 hidden md:flex flex-col border-r border-[#e5e5e5] dark:border-[#222] bg-white dark:bg-[#0c0e14] p-3 overflow-hidden">
+          <div className="text-[11px] font-mono uppercase text-[#666] dark:text-[#888] font-bold mb-3 flex items-center justify-between">
+            <span>Files ({files.length})</span>
+            <button
+              onClick={handleStartCreateFile}
+              className="flex items-center gap-1 px-2 py-0.5 bg-emerald-50 hover:bg-emerald-100 dark:bg-emerald-500/10 dark:hover:bg-emerald-500/20 text-emerald-700 dark:text-emerald-400 rounded text-[11px] font-mono transition cursor-pointer border border-emerald-200 dark:border-emerald-500/30 font-bold"
+              title="Add a new file to this project"
+            >
+              <Plus className="w-3 h-3" />
+              <span>New</span>
+            </button>
           </div>
 
-          <div className="space-y-1">
-            {files.map((file, idx) => (
+          {/* Create New File Inline Input */}
+          {isCreatingFile && (
+            <div className="mb-2 p-1.5 bg-[#f5f5f5] dark:bg-[#1a1a1a] rounded-lg border border-emerald-400 dark:border-emerald-500 flex items-center gap-1.5 animate-fade-in">
+              <FileCode className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 shrink-0" />
+              <input
+                ref={newFileInputRef}
+                value={newFileName}
+                onChange={e => setNewFileName(e.target.value)}
+                onKeyDown={e => {
+                  if (e.key === 'Enter') handleConfirmCreateFile();
+                  if (e.key === 'Escape') setIsCreatingFile(false);
+                }}
+                placeholder="Card.jsx"
+                className="w-full bg-transparent text-xs font-mono text-black dark:text-white focus:outline-none"
+              />
               <button
+                onClick={handleConfirmCreateFile}
+                className="p-1 text-emerald-600 hover:text-emerald-700 dark:text-emerald-400 cursor-pointer"
+                title="Create File (Enter)"
+              >
+                <Check className="w-3 h-3" />
+              </button>
+              <button
+                onClick={() => setIsCreatingFile(false)}
+                className="p-1 text-[#888] hover:text-black dark:hover:text-white cursor-pointer"
+                title="Cancel (Esc)"
+              >
+                <X className="w-3 h-3" />
+              </button>
+            </div>
+          )}
+
+          {/* File list */}
+          <div className="space-y-1 flex-1 overflow-y-auto">
+            {files.map((file, idx) => (
+              <div
                 key={file.name}
                 onClick={() => setActiveFileIndex(idx)}
-                className={`w-full flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs font-mono transition text-left cursor-pointer ${
+                className={`group w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs font-mono transition text-left cursor-pointer ${
                   activeFileIndex === idx
                     ? 'bg-emerald-50 dark:bg-[#1a1a1a] text-emerald-800 dark:text-emerald-300 font-bold border border-emerald-300 dark:border-[#333]'
                     : 'text-[#555] dark:text-[#888] hover:text-black dark:hover:text-[#ededed] hover:bg-[#f5f5f5] dark:hover:bg-[#1a1a1a]'
                 }`}
               >
-                <FileCode className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
-                <span>{file.name}</span>
-              </button>
+                <div className="flex items-center gap-2 truncate">
+                  <FileCode className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 shrink-0" />
+                  <span className="truncate">{file.name}</span>
+                </div>
+                {files.length > 1 && idx !== 0 && (
+                  <button
+                    onClick={e => handleDeleteFile(e, idx)}
+                    className="opacity-0 group-hover:opacity-100 p-1 text-[#888] hover:text-red-500 rounded transition cursor-pointer"
+                    title={`Delete ${file.name}`}
+                  >
+                    <Trash2 className="w-3 h-3" />
+                  </button>
+                )}
+              </div>
             ))}
           </div>
         </div>
@@ -364,7 +518,7 @@ export const PlaygroundPage: React.FC = () => {
           >
             {/* Preview Container */}
             <div className="flex-1 p-4 overflow-auto flex items-center justify-center min-h-0">
-              <LivePreview code={files[0].content} />
+              <LivePreview code={bundledCode} />
             </div>
 
             {/* Bottom Console Drawer */}

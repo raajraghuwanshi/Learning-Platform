@@ -36,10 +36,10 @@ export const ThirtyDayRoadmapPage: React.FC = () => {
           ];
 
           return (
-            <div key={weekNum} className="bg-white dark:bg-[#111] border border-[#e5e5e5] dark:border-[#222] rounded-xl p-6 shadow-xs">
-              <h2 className="text-base font-bold text-black dark:text-white mb-4 pb-2 border-b border-[#e5e5e5] dark:border-[#222] flex items-center justify-between">
+            <div key={weekNum} className="glass-card rounded-2xl p-6 shadow-sm">
+              <h2 className="text-base font-bold text-black dark:text-white mb-4 pb-2 border-b border-black/5 dark:border-white/5 flex items-center justify-between">
                 <span>{weekTitles[weekNum - 1]}</span>
-                <span className="text-xs font-mono text-[#666]">Days {(weekNum - 1) * 7 + 1} - {Math.min(30, weekNum * 7 + (weekNum === 4 ? 2 : 0))}</span>
+                <span className="text-xs font-mono text-[#666] dark:text-[#888]">Days {(weekNum - 1) * 7 + 1} - {Math.min(30, weekNum * 7 + (weekNum === 4 ? 2 : 0))}</span>
               </h2>
 
               <div className="space-y-2">
@@ -50,10 +50,10 @@ export const ThirtyDayRoadmapPage: React.FC = () => {
                     <Link
                       key={day.day}
                       to={`/learn/hooks/${day.topicSlug}`}
-                      className="p-3 bg-[#fafafa] hover:bg-emerald-50 dark:bg-[#0a0a0a]/70 dark:hover:bg-[#0a0a0a] border border-[#e5e5e5] dark:border-[#222]/80 hover:border-emerald-300 dark:hover:border-slate-700 rounded-lg flex items-center justify-between transition group"
+                      className="p-3 glass-card-interactive rounded-xl flex items-center justify-between transition group"
                     >
                       <div className="flex items-center gap-3">
-                        <span className="w-8 h-8 rounded-lg bg-[#f5f5f5] dark:bg-[#111] border border-[#e5e5e5] dark:border-[#222] text-xs font-mono font-bold text-[#555] dark:text-[#888] flex items-center justify-center">
+                        <span className="w-8 h-8 rounded-lg bg-black/[0.04] dark:bg-white/[0.06] border border-black/5 dark:border-white/10 text-xs font-mono font-bold text-[#555] dark:text-[#888] flex items-center justify-center">
                           D{day.day}
                         </span>
                         <div>
@@ -67,7 +67,7 @@ export const ThirtyDayRoadmapPage: React.FC = () => {
                       {isDone ? (
                         <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 ml-2" />
                       ) : (
-                        <Circle className="w-4 h-4 text-[#ccc] dark:text-[#333] shrink-0 ml-2 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition" />
+                        <Circle className="w-4 h-4 text-[#ccc] dark:text-[#444] shrink-0 ml-2 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition" />
                       )}
                     </Link>
                   );

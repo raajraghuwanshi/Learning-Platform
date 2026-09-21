@@ -66,7 +66,7 @@ export const PracticeDashboardPage: React.FC = () => {
           const targetUrl = hub.slug === 'error-lab' ? '/challenges/error-lab' : `/learn/${hub.category}/${hub.slug}#sec-practice`;
 
           return (
-            <div key={idx} className="p-6 bg-white dark:bg-[#111] border border-[#e5e5e5] dark:border-[#222] rounded-xl flex flex-col justify-between hover:border-emerald-300 dark:hover:border-slate-700 transition shadow-xs">
+            <div key={idx} className="glass-card-interactive p-6 rounded-2xl flex flex-col justify-between">
               <div>
                 <div className="flex items-center justify-between mb-3">
                   <div className="p-2 bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-lg border border-emerald-200 dark:border-emerald-500/20">
@@ -83,7 +83,7 @@ export const PracticeDashboardPage: React.FC = () => {
 
               <Link
                 to={targetUrl}
-                className="w-full py-2.5 bg-[#f5f5f5] hover:bg-[#ebebeb] dark:bg-[#1a1a1a] dark:hover:bg-[#222] text-black dark:text-white font-bold text-xs rounded-lg transition flex items-center justify-center gap-2"
+                className="w-full py-2.5 bg-black/5 hover:bg-black/10 dark:bg-white/10 dark:hover:bg-white/15 text-black dark:text-white font-bold text-xs rounded-xl transition flex items-center justify-center gap-2"
               >
                 <span>Launch Practice Lab</span>
                 <ArrowRight className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />

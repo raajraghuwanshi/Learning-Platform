@@ -49,7 +49,7 @@ export const MasteryPanel: React.FC = () => {
 
   return (
     <section className="py-24 px-4 sm:px-6 max-w-7xl mx-auto w-full border-t border-[#e5e5e5] dark:border-[#1a1a1a]">
-      <div className="p-8 sm:p-12 rounded-3xl bg-white dark:bg-[#111] border border-[#e5e5e5] dark:border-[#1a1a1a] shadow-sm">
+      <div className="p-8 sm:p-12 rounded-3xl glass-card">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
           {/* Left Column: Telemetry & Headline */}
           <div className="lg:col-span-5">
@@ -64,7 +64,7 @@ export const MasteryPanel: React.FC = () => {
             </p>
 
             <div className="flex flex-wrap gap-3 mb-6">
-              <div className="px-3.5 py-2 rounded-xl bg-[#fafafa] dark:bg-[#0a0a0a] border border-[#e5e5e5] dark:border-[#222]">
+              <div className="px-3.5 py-2 rounded-xl bg-black/[0.03] dark:bg-white/[0.04] border border-black/5 dark:border-white/10">
                 <div className="text-[10px] uppercase font-mono text-[#888]">Streak</div>
                 <div className="text-sm font-bold font-mono text-amber-700 dark:text-amber-400 flex items-center gap-1">
                   <Flame className="w-3.5 h-3.5 fill-amber-500/20 text-amber-500" />
@@ -72,14 +72,14 @@ export const MasteryPanel: React.FC = () => {
                 </div>
               </div>
 
-              <div className="px-3.5 py-2 rounded-xl bg-[#fafafa] dark:bg-[#0a0a0a] border border-[#e5e5e5] dark:border-[#222]">
+              <div className="px-3.5 py-2 rounded-xl bg-black/[0.03] dark:bg-white/[0.04] border border-black/5 dark:border-white/10">
                 <div className="text-[10px] uppercase font-mono text-[#888]">Practices</div>
                 <div className="text-sm font-bold font-mono text-emerald-700 dark:text-emerald-400">
                   {totalPracticesCount} Solved
                 </div>
               </div>
 
-              <div className="px-3.5 py-2 rounded-xl bg-[#fafafa] dark:bg-[#0a0a0a] border border-[#e5e5e5] dark:border-[#222]">
+              <div className="px-3.5 py-2 rounded-xl bg-black/[0.03] dark:bg-white/[0.04] border border-black/5 dark:border-white/10">
                 <div className="text-[10px] uppercase font-mono text-[#888]">Completed</div>
                 <div className="text-sm font-bold font-mono text-black dark:text-white">
                   {totalCompletedLessons} Lessons
@@ -89,7 +89,7 @@ export const MasteryPanel: React.FC = () => {
 
             <Link
               to="/learn/hooks/use-state"
-              className="inline-flex items-center gap-2 px-5 py-3 bg-black hover:bg-[#111] dark:bg-white dark:hover:bg-[#f0f0f0] dark:text-black text-white font-bold text-xs rounded-xl transition shadow-xs"
+              className="inline-flex items-center gap-2 px-5 py-3 bg-black hover:bg-[#111] dark:bg-white dark:hover:bg-[#f0f0f0] dark:text-black text-white font-bold text-xs rounded-xl transition shadow-md hover:shadow-lg hover:-translate-y-0.5"
             >
               <span>Resume Learning Track</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -97,8 +97,8 @@ export const MasteryPanel: React.FC = () => {
           </div>
 
           {/* Right Column: Instrument Panel Console */}
-          <div className="lg:col-span-7 p-6 sm:p-8 rounded-2xl bg-[#f5f5f5] dark:bg-[#0a0a0a] border border-[#e5e5e5] dark:border-[#222] font-mono">
-            <div className="flex items-center justify-between pb-3 border-b border-[#e5e5e5] dark:border-[#222] mb-6 text-xs text-[#666] dark:text-[#888]">
+          <div className="lg:col-span-7 p-6 sm:p-8 rounded-2xl bg-black/[0.02] dark:bg-black/60 border border-black/5 dark:border-white/10 font-mono shadow-inner">
+            <div className="flex items-center justify-between pb-3 border-b border-black/5 dark:border-white/10 mb-6 text-xs text-[#666] dark:text-[#888]">
               <span className="font-bold uppercase tracking-wider text-black dark:text-white">
                 REACTOS SYSTEM METRICS
               </span>
@@ -129,7 +129,7 @@ export const MasteryPanel: React.FC = () => {
               })}
             </div>
 
-            <div className="mt-6 pt-4 border-t border-[#e5e5e5] dark:border-[#222] flex items-center justify-between text-[10px] text-[#888]">
+            <div className="mt-6 pt-4 border-t border-black/5 dark:border-white/10 flex items-center justify-between text-[10px] text-[#888]">
               <span>STATUS: ONLINE & PERSISTED (LOCALSTORAGE)</span>
               <Link to="/progress" className="text-emerald-700 dark:text-emerald-400 hover:underline font-bold">
                 VIEW FULL BREAKDOWN →

@@ -24,13 +24,13 @@ export const LearnPage: React.FC = () => {
 
       <div className="space-y-8">
         {CURRICULUM_CATEGORIES.map(category => (
-          <div key={category.id} className="bg-white dark:bg-[#111] border border-[#e5e5e5] dark:border-[#1a1a1a] rounded-xl p-6 shadow-xs">
-            <div className="flex flex-wrap items-center justify-between gap-2 mb-4 pb-3 border-b border-[#e5e5e5] dark:border-[#222]">
+          <div key={category.id} className="glass-card rounded-2xl p-6 shadow-sm">
+            <div className="flex flex-wrap items-center justify-between gap-2 mb-4 pb-3 border-b border-black/5 dark:border-white/5">
               <div>
                 <h2 className="text-lg font-bold text-black dark:text-white">{category.title}</h2>
                 <p className="text-xs text-[#666] dark:text-[#888]">{category.description}</p>
               </div>
-              <span className="text-xs font-mono px-2.5 py-1 bg-[#f5f5f5] dark:bg-[#0a0a0a] text-[#555] dark:text-[#888] rounded-lg border border-[#e5e5e5] dark:border-[#222] font-medium">
+              <span className="text-xs font-mono px-2.5 py-1 bg-black/[0.04] dark:bg-white/[0.06] text-[#555] dark:text-[#888] rounded-lg border border-black/5 dark:border-white/10 font-medium">
                 {category.topics.filter(t => progress.completedLessons.includes(t.slug)).length} / {category.topics.length} Done
               </span>
             </div>
@@ -44,13 +44,13 @@ export const LearnPage: React.FC = () => {
                   <Link
                     key={topic.id}
                     to={`/learn/${category.slug}/${topic.slug}`}
-                    className="p-4 bg-[#fafafa] hover:bg-emerald-50 dark:bg-[#0a0a0a] dark:hover:bg-[#0f1a12] border border-[#e5e5e5] dark:border-[#1a1a1a] hover:border-emerald-300 dark:hover:border-emerald-700/40 rounded-xl transition flex items-start justify-between group"
+                    className="p-4 glass-card-interactive rounded-xl flex items-start justify-between group"
                   >
                     <div className="flex items-start gap-3">
                       {isCompleted ? (
                         <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" />
                       ) : (
-                        <Circle className="w-5 h-5 text-[#ccc] dark:text-[#333] shrink-0 mt-0.5 group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition" />
+                        <Circle className="w-5 h-5 text-[#ccc] dark:text-[#444] shrink-0 mt-0.5 group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition" />
                       )}
                       <div>
                         <h3 className="font-bold text-sm text-black dark:text-[#ccc] group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition mb-1">
@@ -59,7 +59,7 @@ export const LearnPage: React.FC = () => {
                         <p className="text-xs text-[#666] dark:text-[#888] line-clamp-2 leading-relaxed">
                           {topic.description}
                         </p>
-                        <div className="flex items-center gap-2 mt-2 text-[11px] font-mono text-[#888] dark:text-[#555]">
+                        <div className="flex items-center gap-2 mt-2 text-[11px] font-mono text-[#888] dark:text-[#666]">
                           <span>{topic.difficulty}</span>
                           <span>•</span>
                           <span>{topic.estimatedMinutes}m</span>

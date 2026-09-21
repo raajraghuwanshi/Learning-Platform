@@ -42,26 +42,26 @@ export const RoadmapPage: React.FC = () => {
             <div key={node.id} className="flex flex-col items-center">
               <Link
                 to={`/learn/${node.category}/${node.slug}`}
-                className={`w-full max-w-xl p-5 rounded-xl border transition flex items-center justify-between group ${
+                className={`w-full max-w-xl p-5 rounded-2xl border transition-all duration-300 flex items-center justify-between group cursor-pointer ${
                   isDone
-                    ? 'bg-emerald-50/50 dark:bg-[#111]/90 border-emerald-300 dark:border-emerald-500/40 ring-1 ring-emerald-500/20 shadow-xs'
-                    : 'bg-white dark:bg-[#0a0a0a]/80 border-[#e5e5e5] dark:border-[#222] hover:border-emerald-300 dark:hover:border-emerald-500/40 hover:bg-[#fafafa] dark:hover:bg-[#1a1a1a] shadow-xs'
+                    ? 'glass-card-interactive border-emerald-500/40 dark:border-emerald-500/40 ring-1 ring-emerald-500/20'
+                    : 'glass-card-interactive border-black/5 dark:border-white/10 hover:border-emerald-500/40'
                 }`}
               >
                 <div className="flex items-center gap-3">
-                  <div className={`p-2 rounded-lg ${isDone ? 'bg-emerald-100 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400' : 'bg-[#f5f5f5] dark:bg-[#1a1a1a] text-[#888] dark:text-[#666]'}`}>
+                  <div className={`p-2 rounded-xl ${isDone ? 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400' : 'bg-black/[0.04] dark:bg-white/[0.06] text-[#888] dark:text-[#666]'}`}>
                     {isDone ? <CheckCircle2 className="w-5 h-5" /> : <Circle className="w-5 h-5" />}
                   </div>
                   <div>
                     <div className="flex items-center gap-2">
-                      <span className="text-[10px] uppercase font-mono px-1.5 py-0.5 rounded bg-[#f5f5f5] dark:bg-[#1a1a1a] text-[#555] dark:text-[#888] font-medium">
+                      <span className="text-[10px] uppercase font-mono px-2 py-0.5 rounded-md bg-black/[0.04] dark:bg-white/[0.06] text-[#555] dark:text-[#888] font-medium">
                         Tier 0{node.level}
                       </span>
-                      <h3 className="font-bold text-sm text-black dark:text-white group-hover:text-emerald-700 dark:group-hover:text-emerald-300 transition">
+                      <h3 className="font-bold text-sm text-black dark:text-white group-hover:text-emerald-700 dark:group-hover:text-emerald-300 transition font-sans">
                         {node.title}
                       </h3>
                     </div>
-                    <p className="text-xs text-[#555] dark:text-[#888] mt-1">{node.summary}</p>
+                    <p className="text-xs text-[#555] dark:text-[#888] mt-1 leading-relaxed">{node.summary}</p>
                   </div>
                 </div>
 

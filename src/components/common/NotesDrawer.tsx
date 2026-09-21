@@ -34,8 +34,8 @@ export const NotesDrawer: React.FC<NotesDrawerProps> = ({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/60 dark:bg-black/80 backdrop-blur-xs flex justify-end animate-fade-in">
-      <div className="bg-white dark:bg-[#0e1017] border-l border-[#e5e5e5] dark:border-[#222] w-full max-w-md h-full p-6 flex flex-col shadow-2xl">
+    <div className="fixed inset-0 z-50 bg-black/40 dark:bg-black/80 backdrop-blur-md flex justify-end animate-fade-in">
+      <div className="glass-card !rounded-none !rounded-l-2xl border-y-0 border-r-0 w-full max-w-md h-full p-6 flex flex-col shadow-2xl">
         <div className="flex items-center justify-between pb-4 border-b border-[#e5e5e5] dark:border-[#222] mb-4">
           <div className="flex items-center gap-2">
             <FileText className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
@@ -44,7 +44,7 @@ export const NotesDrawer: React.FC<NotesDrawerProps> = ({
               <p className="text-xs text-[#666] dark:text-[#888] font-mono">{topicTitle}</p>
             </div>
           </div>
-          <button onClick={onClose} className="text-[#888] hover:text-[#333] dark:hover:text-white p-1">
+          <button onClick={onClose} className="text-[#888] hover:text-[#333] dark:hover:text-white p-1 rounded-lg hover:bg-black/5 dark:hover:bg-white/5 transition">
             <X className="w-5 h-5" />
           </button>
         </div>
@@ -57,7 +57,7 @@ export const NotesDrawer: React.FC<NotesDrawerProps> = ({
             value={content}
             onChange={e => setContent(e.target.value)}
             placeholder="e.g., Remember to always use functional state setter `setCount(prev => ...)` when next state depends on current state!"
-            className="flex-1 p-3 bg-[#fafafa] dark:bg-[#0a0a0a] border border-[#e5e5e5] dark:border-[#222] rounded-lg text-xs font-mono text-black dark:text-[#ededed] resize-none focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 leading-relaxed"
+            className="flex-1 p-3 bg-white/80 dark:bg-[#0a0a0a]/80 backdrop-blur-xs border border-[#e5e5e5] dark:border-[#222] rounded-xl text-xs font-mono text-black dark:text-[#ededed] resize-none focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 leading-relaxed"
           />
         </div>
 

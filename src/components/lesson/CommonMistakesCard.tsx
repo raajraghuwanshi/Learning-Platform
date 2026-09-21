@@ -10,10 +10,10 @@ export const CommonMistakesCard: React.FC<CommonMistakesCardProps> = ({ mistakes
   if (!mistakes || mistakes.length === 0) return null;
 
   return (
-    <div className="bg-white dark:bg-[#111] border border-[#e5e5e5] dark:border-[#222] rounded-xl p-6 mb-8 shadow-xs">
+    <div className="glass-card rounded-2xl p-6 mb-8 shadow-sm">
       <div className="flex items-center gap-2 mb-2">
         <AlertOctagon className="w-5 h-5 text-red-500" />
-        <h3 className="text-base font-bold text-black dark:text-white tracking-tight">Common Beginner Mistakes & Anti-Patterns</h3>
+        <h3 className="text-base font-bold text-black dark:text-white tracking-tight font-sans">Common Beginner Mistakes & Anti-Patterns</h3>
       </div>
       <p className="text-xs text-[#666] dark:text-[#888] mb-6">
         Real mistakes developers make in production and exactly how to prevent them:
@@ -21,7 +21,7 @@ export const CommonMistakesCard: React.FC<CommonMistakesCardProps> = ({ mistakes
 
       <div className="space-y-6">
         {mistakes.map((mistake, idx) => (
-          <div key={idx} className="p-5 bg-[#fafafa] dark:bg-[#0a0a0a] border border-[#e5e5e5] dark:border-[#222]/80 rounded-xl">
+          <div key={idx} className="p-5 bg-black/[0.02] dark:bg-white/[0.03] border border-black/5 dark:border-white/10 rounded-2xl">
             <h4 className="font-bold text-sm text-black dark:text-white mb-1 flex items-center gap-2">
               <span className="w-5 h-5 rounded-full bg-red-100 dark:bg-red-500/20 text-red-700 dark:text-red-400 text-xs flex items-center justify-center font-mono font-bold">
                 {idx + 1}

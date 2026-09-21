@@ -73,7 +73,7 @@ export const ExecutionAnimator: React.FC<ExecutionAnimatorProps> = ({
               className={`flex items-center gap-2 px-3 py-1.5 rounded-lg border text-xs font-medium whitespace-nowrap transition cursor-pointer ${
                 currentStepIndex === idx
                   ? 'bg-amber-100 dark:bg-amber-500/20 text-amber-900 dark:text-amber-300 border-amber-400 dark:border-amber-500/60 ring-2 ring-amber-500/20 font-bold'
-                  : 'bg-white dark:bg-[#111] text-[#333] dark:text-[#888] border-[#e5e5e5] dark:border-[#222] hover:bg-[#fafafa] dark:hover:bg-[#1a1a1a]'
+                  : 'bg-white dark:bg-[#111] text-[#333] dark:text-[#888] border-[#e5e5e5] dark:border-[#222] hover:bg-amber-50/60 dark:hover:bg-[#1a1a1a]'
               }`}
             >
               <span className="w-4 h-4 rounded-full bg-slate-200 dark:bg-[#1a1a1a] text-[10px] flex items-center justify-center font-mono font-bold">

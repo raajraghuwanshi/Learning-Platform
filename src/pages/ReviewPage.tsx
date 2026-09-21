@@ -87,28 +87,28 @@ export const ReviewPage: React.FC = () => {
       </div>
 
       {/* Review Flashcard */}
-      <div className="p-8 bg-white dark:bg-[#111] border border-[#e5e5e5] dark:border-[#222] rounded-2xl mb-6 shadow-xs min-h-[320px] flex flex-col justify-between">
+      <div className="p-8 glass-card rounded-3xl mb-6 shadow-sm min-h-[320px] flex flex-col justify-between">
         <div>
-          <div className="flex items-center justify-between text-xs text-[#666] dark:text-[#888] font-mono mb-4 pb-3 border-b border-[#e5e5e5] dark:border-[#222]">
+          <div className="flex items-center justify-between text-xs text-[#666] dark:text-[#888] font-mono mb-4 pb-3 border-b border-black/5 dark:border-white/5">
             <span>
               Card {currentIdx + 1} of {REVIEW_DECK.length} • Learned {card.daysAgo} days ago
             </span>
-            <span className="px-2 py-0.5 bg-emerald-50 dark:bg-[#0a0a0a] text-emerald-700 dark:text-emerald-400 font-bold rounded border border-emerald-200 dark:border-[#222]">
+            <span className="px-2.5 py-0.5 bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 font-bold rounded-lg border border-emerald-500/20">
               {card.topic}
             </span>
           </div>
 
-          <h2 className="text-xl font-bold text-black dark:text-white mb-4 leading-relaxed">
+          <h2 className="text-xl font-bold text-black dark:text-white mb-4 leading-relaxed font-sans">
             {card.question}
           </h2>
 
-          <div className="p-3 bg-[#fafafa] dark:bg-[#0a0a0a]/80 rounded-lg border border-[#e5e5e5] dark:border-[#222] text-xs text-[#555] dark:text-[#888] mb-4 font-mono">
+          <div className="p-3 bg-black/[0.03] dark:bg-white/[0.04] rounded-xl border border-black/5 dark:border-white/10 text-xs text-[#555] dark:text-[#888] mb-4 font-mono">
             <strong className="text-amber-700 dark:text-amber-400 font-sans">Memory Hint: </strong>
             {card.hint}
           </div>
 
           {isFlipped && (
-            <div className="p-4 bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-900/50 rounded-xl text-xs sm:text-sm text-emerald-900 dark:text-emerald-200 animate-fade-in leading-relaxed">
+            <div className="p-4 bg-emerald-500/[0.08] dark:bg-emerald-950/30 border border-emerald-500/25 dark:border-emerald-900/50 rounded-2xl text-xs sm:text-sm text-emerald-900 dark:text-emerald-200 animate-fade-in leading-relaxed">
               <strong className="text-emerald-700 dark:text-emerald-400 block mb-1 font-mono uppercase text-xs">Explanation:</strong>
               {card.answer}
             </div>

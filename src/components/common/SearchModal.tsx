@@ -48,8 +48,8 @@ export const SearchModal: React.FC = () => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/60 dark:bg-black/80 backdrop-blur-xs flex items-start justify-center p-4 sm:p-6 pt-16 sm:pt-24 animate-fade-in">
-      <div className="bg-white dark:bg-[#111] border border-[#e5e5e5] dark:border-[#222] rounded-xl w-full max-w-2xl overflow-hidden shadow-2xl">
+    <div className="fixed inset-0 z-50 bg-black/40 dark:bg-black/80 backdrop-blur-md flex items-start justify-center p-4 sm:p-6 pt-16 sm:pt-24 animate-fade-in">
+      <div className="glass-card rounded-2xl w-full max-w-2xl overflow-hidden shadow-2xl">
         {/* Search Header */}
         <div className="p-4 border-b border-[#e5e5e5] dark:border-[#222] flex items-center gap-3">
           <Search className="w-5 h-5 text-emerald-600 dark:text-emerald-400 shrink-0" />
@@ -83,7 +83,7 @@ export const SearchModal: React.FC = () => {
                   <button
                     key={t.id}
                     onClick={() => handleSelect(`/learn/${t.category}/${t.slug}`)}
-                    className="w-full p-2.5 bg-[#fafafa] hover:bg-emerald-50 dark:bg-[#1a1a1a] dark:hover:bg-[#222] border border-[#e5e5e5] dark:border-[#222] rounded-lg text-left transition flex items-center justify-between group"
+                    className="w-full p-2.5 bg-white/60 hover:bg-emerald-50/80 dark:bg-[#1a1a1a]/60 dark:hover:bg-[#222]/80 border border-[#e5e5e5] dark:border-[#222] rounded-xl text-left transition flex items-center justify-between group"
                   >
                     <div>
                       <div className="font-bold text-black dark:text-[#ccc] group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition">
@@ -110,7 +110,7 @@ export const SearchModal: React.FC = () => {
                   <button
                     key={e.id}
                     onClick={() => handleSelect(`/challenges/error-lab`)}
-                    className="w-full p-2.5 bg-[#fafafa] hover:bg-red-50 dark:bg-[#1a1a1a] dark:hover:bg-[#221a1a] border border-[#e5e5e5] dark:border-[#222] rounded-lg text-left transition flex items-center justify-between group"
+                    className="w-full p-2.5 bg-white/60 hover:bg-red-50/80 dark:bg-[#1a1a1a]/60 dark:hover:bg-[#221a1a]/80 border border-[#e5e5e5] dark:border-[#222] rounded-xl text-left transition flex items-center justify-between group"
                   >
                     <div>
                       <div className="font-bold text-red-600 dark:text-red-400 group-hover:text-red-700 dark:group-hover:text-red-300 transition">
@@ -137,7 +137,7 @@ export const SearchModal: React.FC = () => {
                   <button
                     key={c.id}
                     onClick={() => handleSelect(`/challenges`)}
-                    className="w-full p-2.5 bg-[#fafafa] hover:bg-amber-50 dark:bg-[#1a1a1a] dark:hover:bg-[#1c1a10] border border-[#e5e5e5] dark:border-[#222] rounded-lg text-left transition flex items-center justify-between group"
+                    className="w-full p-2.5 bg-white/60 hover:bg-amber-50/80 dark:bg-[#1a1a1a]/60 dark:hover:bg-[#1c1a10]/80 border border-[#e5e5e5] dark:border-[#222] rounded-xl text-left transition flex items-center justify-between group"
                   >
                     <div>
                       <div className="font-bold text-amber-600 dark:text-amber-400 group-hover:text-amber-700 dark:group-hover:text-amber-300 transition">
@@ -163,7 +163,7 @@ export const SearchModal: React.FC = () => {
                 {matchedGlossary.map(g => (
                   <div
                     key={g.id}
-                    className="p-2.5 bg-[#fafafa] dark:bg-[#1a1a1a] border border-[#e5e5e5] dark:border-[#222] rounded-lg"
+                    className="p-2.5 bg-white/60 dark:bg-[#1a1a1a]/60 border border-[#e5e5e5] dark:border-[#222] rounded-xl"
                   >
                     <div className="font-bold text-emerald-700 dark:text-emerald-400 mb-0.5">{g.term}</div>
                     <p className="text-[11px] text-[#555] dark:text-[#888]">{g.definition}</p>
@@ -181,7 +181,7 @@ export const SearchModal: React.FC = () => {
         </div>
 
         {/* Modal Footer */}
-        <div className="p-3 bg-[#f5f5f5] dark:bg-[#0a0a0a] border-t border-[#e5e5e5] dark:border-[#222] text-[11px] text-[#888] flex justify-between">
+        <div className="p-3 bg-black/[0.02] dark:bg-white/[0.02] border-t border-[#e5e5e5] dark:border-[#222] text-[11px] text-[#888] flex justify-between">
           <span>Navigate with mouse or arrow keys</span>
           <span>Press ESC to close</span>
         </div>

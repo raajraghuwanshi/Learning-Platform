@@ -64,7 +64,7 @@ export const TopNavbar: React.FC = () => {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`px-3 py-1.5 rounded-md text-[13px] font-medium transition duration-150 ${
+                className={`px-3 py-1.5 rounded-md text-[13px] font-medium transition-all duration-250 ease-out ${
                   isActive
                     ? 'bg-black/[0.06] text-black dark:bg-white/[0.08] dark:text-white font-semibold'
                     : 'text-[#666] dark:text-[#888] hover:text-black dark:hover:text-white hover:bg-black/[0.04] dark:hover:bg-white/[0.05]'

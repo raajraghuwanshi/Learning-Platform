@@ -12,6 +12,7 @@ import { PracticeDashboardPage } from './pages/PracticeDashboardPage';
 import { ChallengesPage } from './pages/ChallengesPage';
 import { ErrorLabPage } from './pages/ErrorLabPage';
 import { ProjectsPage } from './pages/ProjectsPage';
+import { ProjectDetailPage } from './pages/ProjectDetailPage';
 import { PlaygroundPage } from './pages/PlaygroundPage';
 import { RoadmapPage } from './pages/RoadmapPage';
 import { ThirtyDayRoadmapPage } from './pages/ThirtyDayRoadmapPage';
@@ -40,7 +41,7 @@ export const App: React.FC = () => {
                 <Route path="/challenges/error-lab" element={<ErrorLabPage />} />
                 <Route path="/challenges/:challengeId" element={<ChallengesPage />} />
                 <Route path="/projects" element={<ProjectsPage />} />
-                <Route path="/projects/:projectId" element={<ProjectsPage />} />
+                <Route path="/projects/:slug" element={<ProjectDetailPage />} />
                 <Route path="/playground" element={<PlaygroundPage />} />
                 <Route path="/roadmap" element={<RoadmapPage />} />
                 <Route path="/roadmap/30-days" element={<ThirtyDayRoadmapPage />} />

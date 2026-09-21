@@ -70,16 +70,16 @@ export const LearningManifesto: React.FC = () => {
           return (
             <div
               key={p.step}
-              className="p-6 rounded-2xl bg-white dark:bg-[#111] border border-[#e5e5e5] dark:border-[#1a1a1a] shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-between group"
+              className="p-6 rounded-2xl glass-card-interactive flex flex-col justify-between group cursor-default"
             >
               <div>
                 {/* Step number and Tag */}
-                <div className="flex items-center justify-between text-xs font-mono text-[#888] dark:text-[#666] mb-4 pb-2 border-b border-[#f0f0f0] dark:border-[#222]">
-                  <span className="font-bold text-emerald-700 dark:text-emerald-400">{p.step}</span>
-                  <span className="text-[10px] uppercase font-semibold">{p.tag}</span>
+                <div className="flex items-center justify-between text-xs font-mono text-[#888] dark:text-[#666] mb-4 pb-2 border-b border-black/5 dark:border-white/5">
+                  <span className="font-bold text-emerald-700 dark:text-emerald-400 font-mono">{p.step}</span>
+                  <span className="text-[10px] uppercase font-semibold px-2 py-0.5 rounded bg-black/[0.04] dark:bg-white/[0.06] text-[#666] dark:text-[#888]">{p.tag}</span>
                 </div>
 
-                <div className="w-8 h-8 rounded-lg bg-[#f5f5f5] dark:bg-[#1a1a1a] border border-[#e5e5e5] dark:border-[#222] flex items-center justify-center text-emerald-700 dark:text-emerald-400 mb-4 group-hover:border-emerald-500/50 transition">
+                <div className="w-9 h-9 rounded-xl bg-emerald-500/10 dark:bg-emerald-950/40 border border-emerald-500/20 flex items-center justify-center text-emerald-700 dark:text-emerald-400 mb-4 group-hover:scale-110 group-hover:border-emerald-500/50 transition-all duration-300">
                   <Icon className="w-4 h-4" />
                 </div>
 
@@ -87,7 +87,7 @@ export const LearningManifesto: React.FC = () => {
                   {p.action}
                 </div>
 
-                <h3 className="font-bold text-base text-black dark:text-white mb-2 leading-tight">
+                <h3 className="font-bold text-base text-black dark:text-white mb-2 leading-tight font-sans group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition">
                   {p.title}
                 </h3>
 
@@ -96,9 +96,9 @@ export const LearningManifesto: React.FC = () => {
                 </p>
               </div>
 
-              <div className="mt-6 pt-2 border-t border-[#f0f0f0] dark:border-[#222] flex items-center justify-between text-[11px] font-mono text-[#999]">
+              <div className="mt-6 pt-2 border-t border-black/5 dark:border-white/5 flex items-center justify-between text-[11px] font-mono text-[#999]">
                 <span>Phase {p.step}</span>
-                <span>Active</span>
+                <span className="text-emerald-700 dark:text-emerald-400 font-semibold">Active</span>
               </div>
             </div>
           );

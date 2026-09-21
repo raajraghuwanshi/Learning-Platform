@@ -30,7 +30,7 @@ export const ProgressDashboardPage: React.FC = () => {
 
       {/* Top 4 Stats Grid */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-        <div className="p-5 bg-white dark:bg-[#111] border border-[#e5e5e5] dark:border-[#222] rounded-xl shadow-xs">
+        <div className="p-5 glass-card-interactive rounded-2xl">
           <div className="flex items-center justify-between text-xs text-[#666] dark:text-[#888] mb-2 font-medium">
             <span>Overall React Mastery</span>
             <Award className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
@@ -38,12 +38,12 @@ export const ProgressDashboardPage: React.FC = () => {
           <div className="text-3xl font-extrabold font-mono text-emerald-600 dark:text-emerald-400 mb-2">
             {overallMastery}%
           </div>
-          <div className="h-1.5 w-full bg-[#f5f5f5] dark:bg-[#0a0a0a] rounded-full overflow-hidden">
+          <div className="h-1.5 w-full bg-black/[0.04] dark:bg-white/[0.06] rounded-full overflow-hidden">
             <div className="h-full bg-emerald-500 rounded-full" style={{ width: `${overallMastery}%` }} />
           </div>
         </div>
 
-        <div className="p-5 bg-white dark:bg-[#111] border border-[#e5e5e5] dark:border-[#222] rounded-xl shadow-xs">
+        <div className="p-5 glass-card-interactive rounded-2xl">
           <div className="flex items-center justify-between text-xs text-[#666] dark:text-[#888] mb-2 font-medium">
             <span>Daily Study Streak</span>
             <Flame className="w-4 h-4 text-amber-500 fill-amber-500/20" />
@@ -54,7 +54,7 @@ export const ProgressDashboardPage: React.FC = () => {
           <p className="text-[11px] text-[#888] dark:text-[#666] font-mono">Keep the momentum going!</p>
         </div>
 
-        <div className="p-5 bg-white dark:bg-[#111] border border-[#e5e5e5] dark:border-[#222] rounded-xl shadow-xs">
+        <div className="p-5 glass-card-interactive rounded-2xl">
           <div className="flex items-center justify-between text-xs text-[#666] dark:text-[#888] mb-2 font-medium">
             <span>Lessons Completed</span>
             <BookOpen className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
@@ -65,7 +65,7 @@ export const ProgressDashboardPage: React.FC = () => {
           <p className="text-[11px] text-[#888] dark:text-[#666] font-mono">{Math.round((totalCompletedLessons / allTopics.length) * 100)}% of Curriculum</p>
         </div>
 
-        <div className="p-5 bg-white dark:bg-[#111] border border-[#e5e5e5] dark:border-[#222] rounded-xl shadow-xs">
+        <div className="p-5 glass-card-interactive rounded-2xl">
           <div className="flex items-center justify-between text-xs text-[#666] dark:text-[#888] mb-2 font-medium">
             <span>Practice Exercises</span>
             <Dumbbell className="w-4 h-4 text-teal-600 dark:text-teal-400" />
@@ -78,8 +78,8 @@ export const ProgressDashboardPage: React.FC = () => {
       </div>
 
       {/* Category Mastery Breakdown */}
-      <div className="bg-white dark:bg-[#111] border border-[#e5e5e5] dark:border-[#222] rounded-xl p-6 mb-8 shadow-xs">
-        <h2 className="text-base font-bold text-black dark:text-white mb-4 pb-2 border-b border-[#e5e5e5] dark:border-[#222]">
+      <div className="glass-card rounded-2xl p-6 mb-8 shadow-sm">
+        <h2 className="text-base font-bold text-black dark:text-white mb-4 pb-2 border-b border-black/5 dark:border-white/5 font-sans">
           Module Mastery Breakdown
         </h2>
 
@@ -91,11 +91,11 @@ export const ProgressDashboardPage: React.FC = () => {
             const avgCatMastery = Math.round(catMasterySum / catTopics.length);
 
             return (
-              <div key={cat.id} className="p-4 bg-[#fafafa] dark:bg-[#0a0a0a]/60 border border-[#e5e5e5] dark:border-[#222]/80 rounded-xl">
+              <div key={cat.id} className="p-4 bg-black/[0.02] dark:bg-white/[0.03] border border-black/5 dark:border-white/10 rounded-xl">
                 <div className="flex items-center justify-between mb-2 text-xs">
                   <div>
-                    <span className="font-bold text-black dark:text-[#ededed] text-sm">{cat.title}</span>
-                    <span className="text-[#666] ml-2 font-mono">
+                    <span className="font-bold text-black dark:text-[#ededed] text-sm font-sans">{cat.title}</span>
+                    <span className="text-[#666] dark:text-[#888] ml-2 font-mono">
                       ({completedCount}/{catTopics.length} completed)
                     </span>
                   </div>
@@ -103,7 +103,7 @@ export const ProgressDashboardPage: React.FC = () => {
                     {avgCatMastery}%
                   </span>
                 </div>
-                <div className="h-2 w-full bg-[#e5e5e5] dark:bg-[#111] rounded-full overflow-hidden">
+                <div className="h-2 w-full bg-black/[0.04] dark:bg-white/[0.06] rounded-full overflow-hidden">
                   <div
                     className="h-full bg-emerald-500 transition-all duration-300 rounded-full"
                     style={{ width: `${avgCatMastery}%` }}

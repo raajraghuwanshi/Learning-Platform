@@ -68,12 +68,12 @@ export const PracticeSection: React.FC<PracticeSectionProps> = ({ slug, practice
   if (!practices || practices.length === 0) return null;
 
   return (
-    <div className="bg-white dark:bg-[#111] border border-[#e5e5e5] dark:border-[#222] rounded-xl p-6 mb-8 shadow-xs">
+    <div className="glass-card rounded-2xl p-6 mb-8 shadow-sm">
       <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
         <div className="flex items-center gap-2">
           <Dumbbell className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
           <div>
-            <h3 className="text-base font-bold text-black dark:text-white tracking-tight">Interactive Practice Exercises</h3>
+            <h3 className="text-base font-bold text-black dark:text-white tracking-tight font-sans">Interactive Practice Exercises</h3>
             <span className="text-xs text-[#666] dark:text-[#888]">Put theory into muscle memory immediately.</span>
           </div>
         </div>
@@ -86,16 +86,16 @@ export const PracticeSection: React.FC<PracticeSectionProps> = ({ slug, practice
               <button
                 key={p.id}
                 onClick={() => handleSelectExercise(idx)}
-                className={`flex items-center gap-1.5 px-3 py-1 text-xs rounded-lg border transition cursor-pointer ${
+                className={`flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-xl border transition cursor-pointer ${
                   activeExerciseIndex === idx
-                    ? 'bg-emerald-50 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 border-emerald-300 dark:border-emerald-500/50 font-bold shadow-2xs'
-                    : 'bg-[#fafafa] dark:bg-[#0a0a0a] text-[#555] dark:text-[#888] border-[#e5e5e5] dark:border-[#222] hover:text-black dark:hover:text-white'
+                    ? 'bg-emerald-500/10 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 border-emerald-500/40 dark:border-emerald-500/50 font-bold shadow-xs'
+                    : 'glass-card border-black/5 dark:border-white/10 text-[#555] dark:text-[#888] hover:text-black dark:hover:text-white'
                 }`}
               >
                 {done ? (
                   <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" />
                 ) : (
-                  <span className="w-3.5 h-3.5 rounded-full border border-slate-400 dark:border-slate-600 text-[10px] flex items-center justify-center font-mono">
+                  <span className="w-3.5 h-3.5 rounded-full border border-black/20 dark:border-white/20 text-[10px] flex items-center justify-center font-mono">
                     {idx + 1}
                   </span>
                 )}
@@ -114,7 +114,7 @@ export const PracticeSection: React.FC<PracticeSectionProps> = ({ slug, practice
         const solutionCode = current.solutionCode || (current as any).solution || '';
 
         return (
-          <div className="p-5 bg-[#fafafa] dark:bg-[#0a0a0a] border border-[#e5e5e5] dark:border-[#222] rounded-xl mb-4">
+          <div className="p-5 bg-black/[0.02] dark:bg-white/[0.03] border border-black/5 dark:border-white/10 rounded-2xl mb-4">
             <div className="flex items-center justify-between mb-2">
               <span className="text-xs uppercase font-mono text-emerald-700 dark:text-emerald-400 font-bold tracking-wider">
                 {exerciseType.replace('-', ' ')}

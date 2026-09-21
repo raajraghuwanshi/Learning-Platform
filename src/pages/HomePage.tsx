@@ -34,7 +34,7 @@ export const HomePage: React.FC = () => {
       <MasteryPanel />
 
       {/* 8. Footer */}
-      <footer className="mt-auto border-t border-[#e5e5e5] dark:border-[#1a1a1a] bg-[#fafafa] dark:bg-[#0a0a0a] py-16 px-4 sm:px-6 text-xs text-[#666] dark:text-[#888]">
+      <footer className="mt-auto border-t border-[#e5e5e5] dark:border-[#1a1a1a] bg-white dark:bg-[#0a0a0a] py-16 px-4 sm:px-6 text-xs text-[#666] dark:text-[#888]">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
             {/* Column 1: Brand & Philosophy */}

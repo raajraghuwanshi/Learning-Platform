@@ -10,8 +10,8 @@ export const PracticeSectionHero: React.FC = () => {
       desc: 'Master immutable state transitions, batching, and functional updater closures in live tests.',
       url: '/learn/hooks/use-state#sec-practice',
       exercises: '4 Exercises',
-      borderColor: 'border-emerald-200 dark:border-emerald-900/40',
-      bgColor: 'bg-[#f9fffe] dark:bg-[#0a1210]',
+      borderColor: 'border-emerald-500/25 dark:border-emerald-500/20 hover:border-emerald-500/60',
+      bgColor: 'bg-emerald-500/[0.04] dark:bg-emerald-950/20 backdrop-blur-xl',
       accentText: 'text-emerald-700 dark:text-emerald-400',
     },
     {
@@ -20,8 +20,8 @@ export const PracticeSectionHero: React.FC = () => {
       desc: 'Write cleanup functions, fix interval memory leaks, and debug dependency array stale closures.',
       url: '/learn/hooks/use-effect#sec-practice',
       exercises: '3 Exercises',
-      borderColor: 'border-sky-200 dark:border-sky-900/40',
-      bgColor: 'bg-[#f8fbff] dark:bg-[#0a0f18]',
+      borderColor: 'border-sky-500/25 dark:border-sky-500/20 hover:border-sky-500/60',
+      bgColor: 'bg-sky-500/[0.04] dark:bg-sky-950/20 backdrop-blur-xl',
       accentText: 'text-sky-700 dark:text-sky-400',
     },
     {
@@ -30,8 +30,8 @@ export const PracticeSectionHero: React.FC = () => {
       desc: 'Extract modular children wrappers, compose polymorphic props, and enforce pure rendering.',
       url: '/learn/fundamentals/components#sec-practice',
       exercises: '3 Exercises',
-      borderColor: 'border-purple-200 dark:border-purple-900/40',
-      bgColor: 'bg-[#fdfaff] dark:bg-[#100a18]',
+      borderColor: 'border-purple-500/25 dark:border-purple-500/20 hover:border-purple-500/60',
+      bgColor: 'bg-purple-500/[0.04] dark:bg-purple-950/20 backdrop-blur-xl',
       accentText: 'text-purple-700 dark:text-purple-400',
     },
     {
@@ -40,8 +40,8 @@ export const PracticeSectionHero: React.FC = () => {
       desc: 'Read actual React stack traces, analyze Fiber crashes, and resolve runtime mutations.',
       url: '/challenges/error-lab',
       exercises: '6 Scenarios',
-      borderColor: 'border-red-200 dark:border-red-900/40',
-      bgColor: 'bg-[#fffafa] dark:bg-[#180a0a]',
+      borderColor: 'border-red-500/25 dark:border-red-500/20 hover:border-red-500/60',
+      bgColor: 'bg-red-500/[0.04] dark:bg-red-950/20 backdrop-blur-xl',
       accentText: 'text-red-700 dark:text-red-400',
     },
   ];
@@ -69,7 +69,7 @@ export const PracticeSectionHero: React.FC = () => {
         {practiceCards.map((card, idx) => (
           <div
             key={idx}
-            className={`p-6 rounded-2xl border ${card.borderColor} ${card.bgColor} shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-between group`}
+            className={`p-6 rounded-2xl border ${card.borderColor} ${card.bgColor} shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-400 ease-out flex flex-col justify-between group`}
           >
             <div>
               <div className="flex items-center justify-between text-xs font-mono mb-4 pb-2 border-b border-black/5 dark:border-white/5">
@@ -77,7 +77,7 @@ export const PracticeSectionHero: React.FC = () => {
                 <span className="text-[#888] dark:text-[#666] font-medium">{card.exercises}</span>
               </div>
 
-              <h3 className="font-bold text-lg text-black dark:text-white mb-2 leading-snug font-sans group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition">
+              <h3 className="font-bold text-lg text-black dark:text-white mb-2 leading-snug font-sans group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors duration-300">
                 {card.title}
               </h3>
 
@@ -88,10 +88,10 @@ export const PracticeSectionHero: React.FC = () => {
 
             <Link
               to={card.url}
-              className="w-full py-2.5 bg-white hover:bg-[#f5f5f5] dark:bg-[#111] dark:hover:bg-[#1a1a1a] text-black dark:text-white font-bold text-xs rounded-xl border border-[#e5e5e5] dark:border-[#222] transition flex items-center justify-center gap-2 shadow-xs group-hover:border-emerald-500/50"
+              className="w-full py-2.5 bg-white/90 hover:bg-white dark:bg-[#111]/90 dark:hover:bg-[#1a1a1a] backdrop-blur-md text-black dark:text-white font-bold text-xs rounded-xl border border-black/10 dark:border-white/10 transition-all duration-300 ease-out flex items-center justify-center gap-2 shadow-xs group-hover:border-emerald-500/50"
             >
               <span>Launch Lab</span>
-              <ArrowRight className="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-400 group-hover:translate-x-0.5 transition-transform" />
+              <ArrowRight className="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-400 group-hover:translate-x-1 transition-transform duration-300" />
             </Link>
           </div>
         ))}

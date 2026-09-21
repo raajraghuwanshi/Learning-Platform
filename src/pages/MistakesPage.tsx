@@ -24,13 +24,13 @@ export const MistakesPage: React.FC = () => {
       </div>
 
       {mistakeEntries.length === 0 ? (
-        <div className="p-12 bg-white dark:bg-[#111] border border-[#e5e5e5] dark:border-[#222] rounded-2xl text-center text-[#666] shadow-xs">
+        <div className="p-12 glass-card rounded-3xl text-center text-[#666] dark:text-[#888] shadow-sm">
           <CheckCircle2 className="w-8 h-8 text-emerald-600 dark:text-emerald-400 mx-auto mb-3" />
-          <h3 className="text-base font-bold text-black dark:text-white mb-1">Zero Weak Areas Recorded!</h3>
+          <h3 className="text-base font-bold text-black dark:text-white mb-1 font-sans">Zero Weak Areas Recorded!</h3>
           <p className="text-xs max-w-sm mx-auto mb-6">
             You haven't made any recorded mistakes yet. Complete quizzes and challenges to track your learning patterns.
           </p>
-          <Link to="/learn" className="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-lg shadow-sm shadow-emerald-500/20">
+          <Link to="/learn" className="px-5 py-2.5 bg-black hover:bg-[#111] dark:bg-white dark:hover:bg-[#f0f0f0] dark:text-black text-white font-bold text-xs rounded-xl shadow-md transition">
             Start Practicing Now
           </Link>
         </div>
@@ -39,10 +39,10 @@ export const MistakesPage: React.FC = () => {
           {mistakeEntries.map(([key, item]) => (
             <div
               key={key}
-              className="p-5 bg-white dark:bg-[#111] border border-[#e5e5e5] dark:border-[#222] rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-xs"
+              className="p-5 glass-card-interactive rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4"
             >
               <div className="flex items-start gap-3">
-                <div className="p-2 bg-red-50 dark:bg-red-500/10 text-red-600 dark:text-red-400 rounded-lg border border-red-200 dark:border-red-500/20 shrink-0 mt-0.5">
+                <div className="p-2 bg-red-500/10 text-red-600 dark:text-red-400 rounded-xl border border-red-500/20 shrink-0 mt-0.5">
                   <AlertOctagon className="w-5 h-5" />
                 </div>
                 <div>
@@ -50,17 +50,17 @@ export const MistakesPage: React.FC = () => {
                     <span className="text-xs font-mono text-emerald-700 dark:text-emerald-400 font-bold uppercase">
                       {item.topic}
                     </span>
-                    <span className="text-[11px] px-2 py-0.2 bg-red-50 dark:bg-red-500/10 text-red-700 dark:text-red-400 rounded-full border border-red-200 dark:border-red-500/20 font-semibold font-mono">
+                    <span className="text-[11px] px-2 py-0.5 bg-red-500/10 text-red-700 dark:text-red-400 rounded-full border border-red-500/20 font-semibold font-mono">
                       {item.count} mistake{item.count > 1 ? 's' : ''} logged
                     </span>
                   </div>
-                  <h3 className="font-bold text-sm text-black dark:text-[#ededed]">{item.mistakeName}</h3>
+                  <h3 className="font-bold text-sm text-black dark:text-[#ededed] font-sans">{item.mistakeName}</h3>
                 </div>
               </div>
 
               <Link
                 to={`/learn/hooks/use-state#sec-practice`}
-                className="px-4 py-2 bg-[#f5f5f5] hover:bg-[#ebebeb] dark:bg-[#1a1a1a] dark:hover:bg-[#222] text-[#111] dark:text-[#ededed] text-xs font-bold rounded-lg transition flex items-center justify-center gap-1.5 shrink-0"
+                className="px-4 py-2 bg-black/[0.04] hover:bg-emerald-500/10 dark:bg-white/[0.06] dark:hover:bg-emerald-500/20 text-[#111] dark:text-[#ededed] text-xs font-bold rounded-xl transition-all duration-300 ease-out flex items-center justify-center gap-1.5 shrink-0 border border-black/5 dark:border-white/10 group-hover:border-emerald-500/40"
               >
                 <Dumbbell className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
                 <span>Practice Weak Area</span>

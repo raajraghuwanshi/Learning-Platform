@@ -69,10 +69,10 @@ export const InterviewPage: React.FC = () => {
           <button
             key={q.id}
             onClick={() => handleSelectQ(idx)}
-            className={`px-3 py-1.5 rounded-lg border text-xs font-medium whitespace-nowrap transition cursor-pointer ${
+            className={`px-3 py-1.5 rounded-xl border text-xs font-medium whitespace-nowrap transition cursor-pointer ${
               activeQuestionIndex === idx
-                ? 'bg-emerald-50 dark:bg-emerald-500/20 text-emerald-800 dark:text-emerald-300 border-emerald-300 dark:border-emerald-500/60 font-bold shadow-2xs'
-                : 'bg-white dark:bg-[#111] text-[#555] dark:text-[#888] border-[#e5e5e5] dark:border-[#222] hover:bg-[#fafafa] dark:hover:bg-[#1a1a1a]'
+                ? 'bg-emerald-500/10 dark:bg-emerald-500/20 text-emerald-800 dark:text-emerald-300 border-emerald-500/40 dark:border-emerald-500/60 font-bold shadow-xs'
+                : 'glass-card border-black/5 dark:border-white/10 text-[#555] dark:text-[#888] hover:text-black dark:hover:text-white'
             }`}
           >
             <span>Q{idx + 1}: {q.category}</span>
@@ -81,17 +81,17 @@ export const InterviewPage: React.FC = () => {
       </div>
 
       {/* Main Question Card */}
-      <div className="p-6 bg-white dark:bg-[#111] border border-[#e5e5e5] dark:border-[#222] rounded-xl mb-6 shadow-xs">
+      <div className="p-6 sm:p-8 glass-card rounded-3xl mb-6 shadow-sm">
         <div className="flex items-center justify-between gap-2 mb-3">
           <span className="text-xs font-mono text-emerald-700 dark:text-emerald-400 font-bold uppercase">
             {currentQ.difficulty} Frontend Engineer Interview Question
           </span>
-          <span className="text-xs font-mono px-2 py-0.5 rounded bg-[#f5f5f5] dark:bg-[#0a0a0a] text-[#333] dark:text-[#888] border border-[#e5e5e5] dark:border-[#222]">
+          <span className="text-xs font-mono px-2.5 py-0.5 rounded-lg bg-black/[0.04] dark:bg-white/[0.06] text-[#333] dark:text-[#888] border border-black/5 dark:border-white/10">
             {currentQ.category}
           </span>
         </div>
 
-        <h2 className="text-xl font-bold text-black dark:text-white mb-6">
+        <h2 className="text-xl font-bold text-black dark:text-white mb-6 font-sans">
           {currentQ.question}
         </h2>
 
@@ -104,21 +104,21 @@ export const InterviewPage: React.FC = () => {
             value={userAnswer}
             onChange={e => setUserAnswer(e.target.value)}
             placeholder="e.g. State is local, mutable component memory that triggers reconciliation, whereas props are read-only input parameters passed from parents..."
-            className="w-full h-40 p-4 bg-[#fafafa] dark:bg-[#0a0a0a] border border-[#e5e5e5] dark:border-[#222] rounded-xl text-xs sm:text-sm text-black dark:text-[#ededed] resize-none focus:outline-none focus:border-emerald-500 leading-relaxed font-sans"
+            className="w-full h-40 p-4 bg-white/80 dark:bg-black/80 border border-black/10 dark:border-white/10 rounded-2xl text-xs sm:text-sm text-black dark:text-[#ededed] resize-none focus:outline-none focus:border-emerald-500 leading-relaxed font-sans shadow-xs"
           />
         </div>
 
-        <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-[#e5e5e5] dark:border-[#222]">
+        <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-black/5 dark:border-white/5">
           <button
             onClick={handleEvaluate}
-            className="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-lg transition shadow-sm shadow-emerald-500/20 cursor-pointer"
+            className="px-5 py-2.5 bg-black hover:bg-[#111] dark:bg-white dark:hover:bg-[#f0f0f0] dark:text-black text-white font-bold text-xs rounded-xl transition shadow-sm hover:shadow-md cursor-pointer"
           >
             Evaluate My Answer
           </button>
 
           <button
             onClick={() => setShowModelAnswer(!showModelAnswer)}
-            className="px-4 py-2 bg-[#f5f5f5] hover:bg-[#ebebeb] dark:bg-[#1a1a1a] dark:hover:bg-[#222] text-[#111] dark:text-[#ccc] text-xs font-semibold rounded-lg transition cursor-pointer"
+            className="px-4 py-2.5 bg-black/[0.04] hover:bg-black/[0.08] dark:bg-white/[0.06] dark:hover:bg-white/[0.12] text-[#111] dark:text-[#ccc] text-xs font-semibold rounded-xl transition cursor-pointer border border-black/5 dark:border-white/10"
           >
             {showModelAnswer ? 'Hide Senior Model Answer' : 'Reveal Senior Model Answer'}
           </button>
@@ -126,27 +126,27 @@ export const InterviewPage: React.FC = () => {
 
         {/* AI Rubric Evaluation */}
         {evaluation && (
-          <div className="mt-6 p-5 bg-emerald-50/50 dark:bg-[#0a0a0a] border border-emerald-200 dark:border-emerald-900/50 rounded-xl text-xs animate-fade-in space-y-4">
+          <div className="mt-6 p-5 bg-emerald-500/[0.06] dark:bg-emerald-950/20 border border-emerald-500/20 dark:border-emerald-900/50 rounded-2xl text-xs animate-fade-in space-y-4 backdrop-blur-md">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <Award className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
-                <span className="font-bold text-sm text-black dark:text-white">Interview Assessment Result</span>
+                <span className="font-bold text-sm text-black dark:text-white font-sans">Interview Assessment Result</span>
               </div>
               <div className="text-base font-bold font-mono text-emerald-700 dark:text-emerald-400">
                 {evaluation.score}% Match
               </div>
             </div>
 
-            <p className="text-[#333] dark:text-[#ccc] leading-relaxed bg-white dark:bg-[#111] p-3 rounded-lg border border-[#e5e5e5] dark:border-[#222]">
+            <p className="text-[#333] dark:text-[#ccc] leading-relaxed bg-white/90 dark:bg-[#111]/90 p-3 rounded-xl border border-black/5 dark:border-white/10">
               {evaluation.feedback}
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <div className="p-3 bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-900/40 rounded-lg">
-                <span className="font-bold text-emerald-700 dark:text-emerald-400 block mb-1">Key Terminology Covered:</span>
+              <div className="p-3.5 bg-emerald-500/10 dark:bg-emerald-950/30 border border-emerald-500/20 dark:border-emerald-900/40 rounded-xl">
+                <span className="font-bold text-emerald-700 dark:text-emerald-400 block mb-1 font-sans">Key Terminology Covered:</span>
                 <div className="flex flex-wrap gap-1">
                   {evaluation.foundKeywords.map(k => (
-                    <span key={k} className="px-2 py-0.5 bg-emerald-100 dark:bg-emerald-500/10 text-emerald-800 dark:text-emerald-300 rounded font-mono text-[11px] font-bold">
+                    <span key={k} className="px-2 py-0.5 bg-emerald-500/15 dark:bg-emerald-500/20 text-emerald-800 dark:text-emerald-300 rounded-md font-mono text-[11px] font-bold">
                       ✓ {k}
                     </span>
                   ))}
@@ -156,11 +156,11 @@ export const InterviewPage: React.FC = () => {
                 </div>
               </div>
 
-              <div className="p-3 bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-900/40 rounded-lg">
-                <span className="font-bold text-amber-700 dark:text-amber-400 block mb-1">Recommended Keywords to Add:</span>
+              <div className="p-3.5 bg-amber-500/10 dark:bg-amber-950/30 border border-amber-500/20 dark:border-amber-900/40 rounded-xl">
+                <span className="font-bold text-amber-700 dark:text-amber-400 block mb-1 font-sans">Recommended Keywords to Add:</span>
                 <div className="flex flex-wrap gap-1">
                   {evaluation.missingKeywords.map(k => (
-                    <span key={k} className="px-2 py-0.5 bg-amber-100 dark:bg-amber-500/10 text-amber-800 dark:text-amber-300 rounded font-mono text-[11px] font-bold">
+                    <span key={k} className="px-2 py-0.5 bg-amber-500/15 dark:bg-amber-500/20 text-amber-800 dark:text-amber-300 rounded-md font-mono text-[11px] font-bold">
                       + {k}
                     </span>
                   ))}
@@ -172,15 +172,15 @@ export const InterviewPage: React.FC = () => {
 
         {/* Model Senior Answer */}
         {showModelAnswer && (
-          <div className="mt-6 p-5 bg-white dark:bg-[#0a0a0a] border border-[#e5e5e5] dark:border-[#222] rounded-xl text-xs animate-fade-in shadow-xs">
+          <div className="mt-6 p-5 glass-card rounded-2xl text-xs animate-fade-in shadow-xs">
             <span className="font-mono font-bold text-emerald-700 dark:text-emerald-400 block mb-2 text-xs uppercase tracking-wider">
               Senior Staff Engineer Model Answer:
             </span>
-            <p className="text-[#111] dark:text-[#ededed] leading-relaxed mb-4 text-xs sm:text-sm bg-[#fafafa] dark:bg-[#111] p-3.5 rounded-lg border border-[#e5e5e5] dark:border-[#222]">
+            <p className="text-[#111] dark:text-[#ededed] leading-relaxed mb-4 text-xs sm:text-sm bg-black/[0.03] dark:bg-white/[0.04] p-3.5 rounded-xl border border-black/5 dark:border-white/10">
               "{currentQ.sampleSeniorAnswer}"
             </p>
 
-            <span className="font-bold text-red-600 dark:text-red-400 block mb-1 text-xs">
+            <span className="font-bold text-red-600 dark:text-red-400 block mb-1 text-xs font-sans">
               Common Red Flags in Candidate Answers:
             </span>
             <ul className="space-y-1 text-[#555] dark:text-[#888]">

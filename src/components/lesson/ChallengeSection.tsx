@@ -25,31 +25,31 @@ export const ChallengeSection: React.FC<ChallengeSectionProps> = ({ challenge })
   if (!challenge) return null;
 
   return (
-    <div className="bg-white dark:bg-[#111] border border-[#e5e5e5] dark:border-[#222] rounded-xl p-6 mb-8 shadow-xs">
+    <div className="glass-card rounded-2xl p-6 mb-8 shadow-sm">
       <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
         <div className="flex items-center gap-2">
-          <div className="p-1.5 bg-amber-50 dark:bg-amber-500/10 rounded-lg text-amber-600 dark:text-amber-400 border border-amber-200 dark:border-amber-500/20">
+          <div className="p-2 bg-amber-500/10 rounded-xl text-amber-600 dark:text-amber-400 border border-amber-500/20">
             <Trophy className="w-5 h-5" />
           </div>
           <div>
-            <h3 className="text-base font-bold text-black dark:text-white tracking-tight">Lesson Capstone Challenge</h3>
+            <h3 className="text-base font-bold text-black dark:text-white tracking-tight font-sans">Lesson Capstone Challenge</h3>
             <p className="text-xs text-[#666] dark:text-[#888]">Build a real feature to solidify and prove your mastery.</p>
           </div>
         </div>
 
         {isCompleted && (
-          <span className="text-xs font-bold px-3 py-1 bg-emerald-50 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-400 rounded-full border border-emerald-200 dark:border-emerald-500/30 flex items-center gap-1.5 shadow-2xs">
+          <span className="text-xs font-bold px-3 py-1 bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 rounded-full border border-emerald-500/30 flex items-center gap-1.5 shadow-2xs">
             <CheckCircle className="w-4 h-4" /> Challenge Mastered!
           </span>
         )}
       </div>
 
       {/* Description & Requirements */}
-      <div className="p-5 bg-[#fafafa] dark:bg-[#0a0a0a] border border-[#e5e5e5] dark:border-[#222] rounded-xl mb-4 text-xs">
-        <h4 className="font-bold text-sm text-black dark:text-white mb-2">{challenge.title}</h4>
+      <div className="p-5 bg-black/[0.02] dark:bg-white/[0.03] border border-black/5 dark:border-white/10 rounded-2xl mb-4 text-xs">
+        <h4 className="font-bold text-sm text-black dark:text-white mb-2 font-sans">{challenge.title}</h4>
         <p className="text-[#444] dark:text-[#ccc] leading-relaxed mb-4">{challenge.description}</p>
 
-        <div className="bg-white dark:bg-[#111] p-3.5 rounded-lg border border-[#e5e5e5] dark:border-[#222] mb-2">
+        <div className="bg-white/80 dark:bg-[#111]/80 backdrop-blur-md p-3.5 rounded-xl border border-black/5 dark:border-white/10 mb-2">
           <span className="font-bold text-black dark:text-[#ccc] block mb-2 font-mono uppercase tracking-wider text-[11px]">
             Requirements:
           </span>

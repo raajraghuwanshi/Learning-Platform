@@ -62,15 +62,15 @@ export const ErrorLabPage: React.FC = () => {
               <button
                 key={item.id}
                 onClick={() => handleSelectError(item)}
-                className={`w-full p-3.5 rounded-xl border text-left transition flex items-start justify-between cursor-pointer ${
+                className={`w-full p-3.5 rounded-xl border text-left transition-all duration-300 ease-out flex items-start justify-between cursor-pointer ${
                   isSelected
-                    ? 'bg-red-50 dark:bg-[#111] border-red-300 dark:border-red-500/60 ring-2 ring-red-500/20'
-                    : 'bg-white dark:bg-[#0a0a0a]/70 border-[#e5e5e5] dark:border-[#222]/80 hover:bg-[#fafafa] dark:hover:bg-[#1a1a1a] text-[#333] dark:text-[#ccc]'
+                    ? 'bg-red-500/10 dark:bg-red-950/40 border-red-400 dark:border-red-500/60 ring-2 ring-red-500/20 shadow-sm'
+                    : 'glass-card-interactive border-black/5 dark:border-white/10 hover:border-red-300 dark:hover:border-red-500/40 text-[#333] dark:text-[#ccc]'
                 }`}
               >
                 <div>
                   <div className="flex items-center gap-2 mb-1">
-                    <span className="text-[10px] uppercase font-mono px-1.5 py-0.5 rounded bg-[#f5f5f5] dark:bg-[#1a1a1a] text-[#555] dark:text-[#888]">
+                    <span className="text-[10px] uppercase font-mono px-1.5 py-0.5 rounded bg-black/[0.04] dark:bg-white/[0.06] text-[#555] dark:text-[#888]">
                       {item.category}
                     </span>
                     <span className={`text-[10px] font-mono font-bold ${
@@ -79,7 +79,7 @@ export const ErrorLabPage: React.FC = () => {
                       {item.difficulty}
                     </span>
                   </div>
-                  <h4 className="font-bold text-xs text-black dark:text-white leading-snug">{item.title}</h4>
+                  <h4 className="font-bold text-xs text-black dark:text-white leading-snug font-sans">{item.title}</h4>
                 </div>
 
                 {isDone && <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 ml-2 mt-1" />}
@@ -91,20 +91,20 @@ export const ErrorLabPage: React.FC = () => {
         {/* Right Active Lab Workbench */}
         <div className="lg:col-span-2 space-y-6">
           {/* Diagnostic Error Banner */}
-          <div className="p-5 bg-red-50 dark:bg-red-950/20 border border-red-200 dark:border-red-900/50 rounded-xl shadow-xs">
+          <div className="p-5 bg-red-500/[0.05] dark:bg-red-950/20 border border-red-500/20 dark:border-red-900/50 backdrop-blur-xl rounded-2xl shadow-sm">
             <div className="flex items-center justify-between gap-2 mb-2">
               <div className="flex items-center gap-2 text-red-700 dark:text-red-400 font-bold text-sm">
                 <AlertTriangle className="w-4 h-4" />
                 <span>Runtime Crash Trace</span>
               </div>
               {isResolved && (
-                <span className="text-xs font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-500/10 px-2.5 py-0.5 rounded border border-emerald-200 dark:border-emerald-500/20 flex items-center gap-1">
+                <span className="text-xs font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-500/10 dark:bg-emerald-500/20 px-2.5 py-0.5 rounded-lg border border-emerald-500/30 flex items-center gap-1">
                   <CheckCircle2 className="w-3.5 h-3.5" /> Resolved!
                 </span>
               )}
             </div>
 
-            <pre className="p-3 bg-slate-900 text-red-200 rounded-lg font-mono text-xs overflow-x-auto mb-3">
+            <pre className="p-3 bg-slate-900 text-red-200 rounded-xl font-mono text-xs overflow-x-auto mb-3 shadow-inner">
               {currentError.errorMessage}
             </pre>
 
@@ -113,7 +113,7 @@ export const ErrorLabPage: React.FC = () => {
                 <strong className="text-red-700 dark:text-red-400">What Happened: </strong>
                 {currentError.whyItHappened}
               </div>
-              <div className="text-[#555] dark:text-[#888] bg-white dark:bg-black/30 p-2.5 rounded border border-[#e5e5e5] dark:border-[#222] font-mono text-[11px]">
+              <div className="text-[#555] dark:text-[#888] bg-white/70 dark:bg-black/30 p-2.5 rounded-xl border border-black/5 dark:border-white/10 font-mono text-[11px]">
                 <strong className="text-emerald-700 dark:text-emerald-400 font-sans">Mental Model: </strong>
                 {currentError.mentalModel}
               </div>

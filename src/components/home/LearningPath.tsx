@@ -115,15 +115,15 @@ export const LearningPath: React.FC = () => {
             <Link
               key={item.number}
               to={`/learn/${item.category}/${item.slug}`}
-              className="p-6 rounded-2xl bg-white dark:bg-[#111] border border-[#e5e5e5] dark:border-[#1a1a1a] shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-between group cursor-pointer"
+              className="p-6 rounded-2xl glass-card-interactive flex flex-col justify-between group cursor-pointer"
             >
               <div>
                 {/* Number & Tag */}
-                <div className="flex items-center justify-between pb-3 border-b border-[#f0f0f0] dark:border-[#222] mb-4">
+                <div className="flex items-center justify-between pb-3 border-b border-black/5 dark:border-white/5 mb-4">
                   <span className="text-2xl font-bold font-mono text-black dark:text-white group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition">
                     {item.number}
                   </span>
-                  <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[#f5f5f5] dark:bg-[#1a1a1a] text-[#666] dark:text-[#888]">
+                  <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-black/[0.04] dark:bg-white/[0.06] text-[#666] dark:text-[#888]">
                     {item.tag}
                   </span>
                 </div>
@@ -141,15 +141,15 @@ export const LearningPath: React.FC = () => {
                 </p>
               </div>
 
-              <div className="mt-6 pt-3 border-t border-[#f0f0f0] dark:border-[#222] flex items-center justify-between text-xs font-mono">
+              <div className="mt-6 pt-3 border-t border-black/5 dark:border-white/5 flex items-center justify-between text-xs font-mono">
                 {isDone ? (
                   <span className="inline-flex items-center gap-1 text-emerald-700 dark:text-emerald-400 font-bold">
                     <CheckCircle2 className="w-3.5 h-3.5" /> Completed
                   </span>
                 ) : (
-                  <span className="text-[#999]">Launch Lesson</span>
+                  <span className="text-[#999] group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors">Launch Lesson</span>
                 )}
-                <ArrowUpRight className="w-4 h-4 text-[#999] group-hover:text-emerald-600 dark:group-hover:text-emerald-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition" />
+                <ArrowUpRight className="w-4 h-4 text-[#999] group-hover:text-emerald-600 dark:group-hover:text-emerald-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </div>
             </Link>
           );

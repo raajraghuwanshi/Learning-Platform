@@ -21,20 +21,20 @@ export const WhyBox: React.FC<WhyBoxProps> = ({
   const [isOpen, setIsOpen] = useState(true);
 
   return (
-    <div className="bg-white dark:bg-[#111] border border-[#e5e5e5] dark:border-[#222] rounded-xl overflow-hidden mb-8 shadow-xs">
+    <div className="glass-card rounded-2xl overflow-hidden mb-8 shadow-sm">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full p-4 bg-[#fafafa] dark:bg-[#111] flex items-center justify-between text-left hover:bg-[#f5f5f5] dark:hover:bg-[#1a1a1a] transition cursor-pointer"
+        className="w-full p-4 bg-white/80 dark:bg-[#111]/80 backdrop-blur-md flex items-center justify-between text-left hover:bg-black/[0.02] dark:hover:bg-white/[0.04] transition cursor-pointer"
       >
         <div className="flex items-center gap-2.5">
-          <div className="p-1.5 rounded-lg bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20">
+          <div className="p-2 rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20">
             <HelpCircle className="w-4 h-4" />
           </div>
           <div>
             <span className="text-[11px] font-mono uppercase tracking-wider text-amber-600 dark:text-amber-400 font-bold block">
               💡 Why Does React Do This?
             </span>
-            <span className="text-sm sm:text-base font-bold text-black dark:text-white">
+            <span className="text-sm sm:text-base font-bold text-black dark:text-white font-sans">
               {question}
             </span>
           </div>
@@ -45,7 +45,7 @@ export const WhyBox: React.FC<WhyBoxProps> = ({
       </button>
 
       {isOpen && (
-        <div className="p-6 border-t border-[#e5e5e5] dark:border-[#222] space-y-6">
+        <div className="p-6 border-t border-black/5 dark:border-white/5 space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Vanilla approach */}
             <div className="p-4 bg-red-50 dark:bg-red-950/20 border border-red-200 dark:border-red-900/40 rounded-lg">

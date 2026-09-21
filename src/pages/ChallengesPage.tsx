@@ -39,24 +39,24 @@ export const ChallengesPage: React.FC = () => {
           return (
             <div
               key={challenge.id}
-              className="p-6 bg-white dark:bg-[#111] border border-[#e5e5e5] dark:border-[#222] rounded-xl flex flex-col justify-between hover:border-emerald-300 dark:hover:border-slate-700 transition shadow-xs"
+              className="p-6 glass-card-interactive rounded-2xl flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between mb-3">
-                  <span className={`text-xs px-2.5 py-0.5 rounded border font-medium ${
+                  <span className={`text-xs px-2.5 py-0.5 rounded-lg border font-medium ${
                     challenge.difficulty === 'Beginner' 
-                      ? 'text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-500/10 border-emerald-200 dark:border-emerald-500/20'
-                      : 'text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-500/10 border-amber-200 dark:border-amber-500/20'
+                      ? 'text-emerald-700 dark:text-emerald-400 bg-emerald-500/10 border-emerald-500/20'
+                      : 'text-amber-700 dark:text-amber-400 bg-amber-500/10 border-amber-500/20'
                   }`}>
                     {challenge.difficulty}
                   </span>
-                  <div className="flex items-center gap-1 text-xs text-[#666] dark:text-[#888]">
+                  <div className="flex items-center gap-1 text-xs text-[#666] dark:text-[#888] font-mono">
                     <Clock className="w-3.5 h-3.5" />
                     <span>{challenge.estimatedMinutes}m</span>
                   </div>
                 </div>
 
-                <h3 className="text-base font-bold text-black dark:text-white mb-2">{challenge.title}</h3>
+                <h3 className="text-base font-bold text-black dark:text-white mb-2 font-sans">{challenge.title}</h3>
                 <p className="text-xs text-[#555] dark:text-[#888] line-clamp-3 mb-4 leading-relaxed">
                   {challenge.description}
                 </p>
@@ -69,7 +69,7 @@ export const ChallengesPage: React.FC = () => {
               <div className="flex items-center gap-2">
                 <Link
                   to={`/learn/hooks/use-state#sec-challenge`}
-                  className="w-full py-2.5 bg-[#f5f5f5] hover:bg-[#ebebeb] dark:bg-[#1a1a1a] dark:hover:bg-[#222] text-[#111] dark:text-[#ededed] font-bold text-xs rounded-lg text-center transition flex items-center justify-center gap-2"
+                  className="w-full py-2.5 bg-black/[0.04] hover:bg-emerald-500/10 dark:bg-white/[0.06] dark:hover:bg-emerald-500/20 text-[#111] dark:text-[#ededed] font-bold text-xs rounded-xl text-center transition-all duration-300 ease-out flex items-center justify-center gap-2 border border-black/5 dark:border-white/10 group-hover:border-emerald-500/40"
                 >
                   {isCompleted ? (
                     <>
@@ -79,7 +79,7 @@ export const ChallengesPage: React.FC = () => {
                   ) : (
                     <>
                       <span>Start Challenge</span>
-                      <ArrowRight className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
+                      <ArrowRight className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 group-hover:translate-x-0.5 transition-transform" />
                     </>
                   )}
                 </Link>

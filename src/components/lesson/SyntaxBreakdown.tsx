@@ -39,12 +39,12 @@ export const SyntaxBreakdown: React.FC<SyntaxBreakdownProps> = ({ code, breakdow
   };
 
   return (
-    <div className="bg-white dark:bg-[#111] border border-[#e5e5e5] dark:border-[#222] rounded-xl p-6 mb-8 shadow-xs">
-      <div className="flex flex-wrap items-center justify-between gap-3 mb-4 pb-3 border-b border-[#e5e5e5] dark:border-[#222]/80">
+    <div className="glass-card rounded-2xl p-6 mb-8 shadow-sm">
+      <div className="flex flex-wrap items-center justify-between gap-3 mb-4 pb-3 border-b border-black/5 dark:border-white/5">
         <div className="flex items-center gap-2">
           <Terminal className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
           <div>
-            <h3 className="text-base font-bold text-black dark:text-white tracking-tight">
+            <h3 className="text-base font-bold text-black dark:text-white tracking-tight font-sans">
               {hasSteps ? 'Syntax & Implementation Steps' : 'Syntax & Anatomy'}
             </h3>
             <span className="text-xs text-[#666] dark:text-[#888]">
@@ -56,7 +56,7 @@ export const SyntaxBreakdown: React.FC<SyntaxBreakdownProps> = ({ code, breakdow
         </div>
 
         {hasSteps && (
-          <span className="text-[11px] font-mono text-emerald-700 dark:text-emerald-400 font-bold bg-emerald-50 dark:bg-emerald-500/10 px-2.5 py-1 rounded-full border border-emerald-300 dark:border-emerald-500/20">
+          <span className="text-[11px] font-mono text-emerald-700 dark:text-emerald-400 font-bold bg-emerald-500/10 px-2.5 py-1 rounded-full border border-emerald-500/20">
             {steps.length} Steps to Master
           </span>
         )}
@@ -71,10 +71,10 @@ export const SyntaxBreakdown: React.FC<SyntaxBreakdownProps> = ({ code, breakdow
               <button
                 key={step.step || idx}
                 onClick={() => handleSelectStep(idx)}
-                className={`flex items-center gap-2 px-3 py-2 rounded-lg text-xs font-mono transition shrink-0 cursor-pointer border ${
+                className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-mono transition shrink-0 cursor-pointer border ${
                   isActive
                     ? 'bg-black text-white dark:bg-white dark:text-black font-bold border-black dark:border-white shadow-xs'
-                    : 'bg-[#fafafa] dark:bg-[#161616] text-[#666] dark:text-[#888] hover:text-black dark:hover:text-white border-[#e5e5e5] dark:border-[#262626]'
+                    : 'glass-card border-black/5 dark:border-white/10 text-[#666] dark:text-[#888] hover:text-black dark:hover:text-white'
                 }`}
               >
                 <span className={`w-4 h-4 rounded-full text-[10px] flex items-center justify-center font-bold ${
@@ -92,7 +92,7 @@ export const SyntaxBreakdown: React.FC<SyntaxBreakdownProps> = ({ code, breakdow
       )}
 
       {/* Current Step Content or Single-Snippet */}
-      <div className="bg-[#fafafa] dark:bg-[#0a0a0a] border border-[#e5e5e5] dark:border-[#222] rounded-xl p-4 sm:p-5 mb-4">
+      <div className="bg-black/[0.02] dark:bg-white/[0.03] border border-black/5 dark:border-white/10 rounded-2xl p-4 sm:p-5 mb-4">
         {/* Step Header */}
         <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
           <div className="flex items-center gap-2">
